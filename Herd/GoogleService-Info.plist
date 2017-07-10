@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>808026920361-bg71v39ibca01882s30209qo974mok9s.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.808026920361-bg71v39ibca01882s30209qo974mok9s</string>
+	<key>API_KEY</key>
+	<string>AIzaSyANfwOZPnY5WYA1eHlydSM5FawTUzjlxhA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>808026920361</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.HerdApp.Herd</string>
+	<key>PROJECT_ID</key>
+	<string>herd-de17e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>herd-de17e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:808026920361:ios:4c532105e23b5cc0</string>
+	<key>DATABASE_URL</key>
+	<string>https://herd-de17e.firebaseio.com</string>
+</dict>
+</plist>

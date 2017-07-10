@@ -1,0 +1,103 @@
+PODS:
+  - AFDateHelper (4.2.2)
+  - AMScrollingNavbar (3.3.3)
+  - Fakery (2.0.0)
+  - FCAlertView (1.3.1)
+  - Firebase (4.0.0):
+    - Firebase/Core (= 4.0.0)
+  - Firebase/Auth (4.0.0):
+    - Firebase/Core
+    - FirebaseAuth (= 4.0.0)
+  - Firebase/Core (4.0.0):
+    - FirebaseAnalytics (= 4.0.0)
+    - FirebaseCore (= 4.0.0)
+  - FirebaseAnalytics (4.0.0):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseAuth (4.0.0):
+    - FirebaseAnalytics (~> 4.0)
+    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseCore (4.0.0):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseInstanceID (2.0.0):
+    - FirebaseCore (~> 4.0)
+  - Floaty (3.0.0)
+  - FontAwesome.swift (1.2.0)
+  - GoogleToolboxForMac/DebugUtils (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.1):
+    - GoogleToolboxForMac/DebugUtils (= 2.1.1)
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
+  - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
+  - GTMSessionFetcher/Core (1.1.10)
+  - Hero (0.3.6)
+  - LTMorphingLabel (0.5.0)
+  - RevealingSplashView (0.2.0)
+  - SJFluidSegmentedControl (1.1.2)
+  - Spring (1.0.3)
+  - SwiftLocation (2.0.7)
+  - SwiftyButton (0.6.0)
+  - XLActionController (3.0.1):
+    - XLActionController/Core (= 3.0.1)
+  - XLActionController/Core (3.0.1)
+
+DEPENDENCIES:
+  - AFDateHelper (~> 4.2.1)
+  - AMScrollingNavbar
+  - Fakery
+  - FCAlertView
+  - Firebase
+  - Firebase/Auth
+  - Floaty (~> 3.0.0)
+  - FontAwesome.swift
+  - Hero
+  - LTMorphingLabel
+  - RevealingSplashView
+  - SJFluidSegmentedControl (~> 1.0)
+  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
+  - SwiftLocation
+  - SwiftyButton
+  - XLActionController
+
+EXTERNAL SOURCES:
+  Spring:
+    :branch: swift3
+    :git: https://github.com/MengTo/Spring.git
+
+CHECKOUT OPTIONS:
+  Spring:
+    :commit: 8201b5c93bd7ebdf4cd18160bcde1e6e88c2be64
+    :git: https://github.com/MengTo/Spring.git
+
+SPEC CHECKSUMS:
+  AFDateHelper: 0f9588a442b4d7ef862568ae5d40ab883672efb5
+  AMScrollingNavbar: 6a2c01a912b96aa36581268759f18d85b3d1575e
+  Fakery: 97b99c23937d2e025d9135c75e2b17351ccd5031
+  FCAlertView: '083c067bfd98f147abf5a66fe0e31cefac7bc809'
+  Firebase: 284eea779b73fdff309791817da7c68bff8dd572
+  FirebaseAnalytics: 6f08e746f7d66f5452931bc2e822b5df9c66b64a
+  FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
+  FirebaseCore: 85ad466044c2f013cdb167f85d426d15b128114a
+  FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
+  Floaty: d1be5d323094f0de422bb615452d00ba26ac74dd
+  FontAwesome.swift: 60063e3f19ba4801155d4b0f2334ab7585763ab3
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
+  Hero: d3c6f4dd80cdcdbb339be64e57ae3b5c3ab9938c
+  LTMorphingLabel: bc170be74b219b7dae0e5543a44676d16da70ff7
+  RevealingSplashView: a19962358db66188841c73afd51eb663a29f75cd
+  SJFluidSegmentedControl: efd26ea5f0832c715e2750314a2dc0cc81e39ae5
+  Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
+  SwiftLocation: 1fe2e15a5812e961496e82eeaca71d03e829e47a
+  SwiftyButton: 4c9b61c499f172971a1b8c2eebbbdc20a26d8a08
+  XLActionController: 57fe0ce1642e2eed971b188b490762345fdbf963
+
+PODFILE CHECKSUM: 6851e905178943613502a9dd03d65512551ca464
+
+COCOAPODS: 1.2.1

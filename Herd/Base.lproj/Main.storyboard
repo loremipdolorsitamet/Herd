@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17A291m" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AoU-es-BsK">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="FuturaPTLight.otf">
+            <string>FuturaPT-Light</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Login View Controller  - Location Pending-->
+        <scene sceneID="yfI-3Y-N5t">
+            <objects>
+                <viewController title="Login View Controller  - Location Pending" id="AoU-es-BsK" customClass="Login_Location_Pending" customModule="Herd" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZeB-eY-HV4"/>
+                        <viewControllerLayoutGuide type="bottom" id="ihG-Oi-Am4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fsJ-ta-8Ys">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.28999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hMr-GU-fPJ" userLabel="Gray Background">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Herdmoji Background" translatesAutoresizingMaskIntoConstraints="NO" id="oQY-Hp-dDt" userLabel="Herdmoji Background Image View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="Herd_Dialog_Image_View"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Herd Dialog" translatesAutoresizingMaskIntoConstraints="NO" id="aoT-Lb-zlc" userLabel="Herd Dialog Image View">
+                                <rect key="frame" x="47" y="157" width="281" height="128"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="Herd_Dialog"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oQY-Hp-dDt" firstAttribute="leading" secondItem="fsJ-ta-8Ys" secondAttribute="leading" id="3tb-CY-y0e"/>
+                            <constraint firstItem="hMr-GU-fPJ" firstAttribute="trailing" secondItem="oQY-Hp-dDt" secondAttribute="trailing" id="5sp-wm-fk1"/>
+                            <constraint firstItem="hMr-GU-fPJ" firstAttribute="top" secondItem="fsJ-ta-8Ys" secondAttribute="top" id="9j2-b0-Ci4"/>
+                            <constraint firstItem="hMr-GU-fPJ" firstAttribute="leading" secondItem="oQY-Hp-dDt" secondAttribute="leading" id="HNB-ou-QYH"/>
+                            <constraint firstItem="aoT-Lb-zlc" firstAttribute="top" secondItem="ZeB-eY-HV4" secondAttribute="bottom" constant="137" id="IQ8-1j-XbN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aoT-Lb-zlc" secondAttribute="trailing" constant="31" id="MDK-kL-Op0"/>
+                            <constraint firstItem="ihG-Oi-Am4" firstAttribute="top" secondItem="aoT-Lb-zlc" secondAttribute="bottom" constant="382" id="T9v-HR-RLu"/>
+                            <constraint firstItem="aoT-Lb-zlc" firstAttribute="leading" secondItem="fsJ-ta-8Ys" secondAttribute="leadingMargin" constant="31" id="ZQa-6j-kEX"/>
+                            <constraint firstAttribute="trailing" secondItem="oQY-Hp-dDt" secondAttribute="trailing" id="bGJ-J6-tru"/>
+                            <constraint firstItem="hMr-GU-fPJ" firstAttribute="bottom" secondItem="ihG-Oi-Am4" secondAttribute="top" id="maU-Ub-72U"/>
+                            <constraint firstItem="ihG-Oi-Am4" firstAttribute="top" secondItem="oQY-Hp-dDt" secondAttribute="bottom" id="z02-EN-5cy"/>
+                            <constraint firstItem="oQY-Hp-dDt" firstAttribute="top" secondItem="fsJ-ta-8Ys" secondAttribute="top" id="zVN-0Y-y3k"/>
+                        </constraints>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="Herd_Dialog_Image_View" destination="aoT-Lb-zlc" id="q0p-Dw-n0b"/>
+                        <segue destination="1sH-mL-dGi" kind="presentation" identifier="toLocationSuccess" id="Hsj-Wl-6Xb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t8E-9e-6eN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-727.20000000000005" y="-286.50674662668666"/>
+        </scene>
+        <!--Login View Controller - Location Pulled-->
+        <scene sceneID="pih-96-Vrh">
+            <objects>
+                <viewController title="Login View Controller - Location Pulled" id="1sH-mL-dGi" customClass="Login_Location_Pulled" customModule="Herd" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AvU-0i-hTg"/>
+                        <viewControllerLayoutGuide type="bottom" id="5eY-ny-ghR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vFO-xX-q51">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.28999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FHo-hd-6l2" userLabel="Gray Background">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Herdmoji Background" translatesAutoresizingMaskIntoConstraints="NO" id="J4m-Ft-L5v" userLabel="Herdmoji Background Image View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Herd Dialog" translatesAutoresizingMaskIntoConstraints="NO" id="SiB-kw-uls" userLabel="Herd Dialog Image View">
+                                <rect key="frame" x="47" y="64" width="281" height="128"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="Herd_Dialog"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AII-Vk-4Fe" userLabel="Welcome Dialog Container View">
+                                <rect key="frame" x="8" y="386" width="359" height="289"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="Welcome_Dialog_Container_View"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="0nx-71-0wp" kind="embed" id="pCp-QO-xkL"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AII-Vk-4Fe" firstAttribute="leading" secondItem="vFO-xX-q51" secondAttribute="leading" constant="8" id="1es-4g-oBS"/>
+                            <constraint firstItem="5eY-ny-ghR" firstAttribute="top" secondItem="J4m-Ft-L5v" secondAttribute="bottom" id="33N-4u-XU2"/>
+                            <constraint firstItem="J4m-Ft-L5v" firstAttribute="leading" secondItem="vFO-xX-q51" secondAttribute="leading" id="6zg-fb-YxL"/>
+                            <constraint firstAttribute="trailing" secondItem="J4m-Ft-L5v" secondAttribute="trailing" id="9WD-yQ-s6C"/>
+                            <constraint firstItem="FHo-hd-6l2" firstAttribute="top" secondItem="vFO-xX-q51" secondAttribute="top" id="De6-39-0bg"/>
+                            <constraint firstItem="J4m-Ft-L5v" firstAttribute="top" secondItem="vFO-xX-q51" secondAttribute="top" id="JT3-JP-WcL"/>
+                            <constraint firstItem="AII-Vk-4Fe" firstAttribute="top" secondItem="SiB-kw-uls" secondAttribute="bottom" constant="194" id="PXH-RM-Ftq"/>
+                            <constraint firstItem="FHo-hd-6l2" firstAttribute="leading" secondItem="vFO-xX-q51" secondAttribute="leading" id="SfO-DY-hfz"/>
+                            <constraint firstItem="5eY-ny-ghR" firstAttribute="top" secondItem="FHo-hd-6l2" secondAttribute="bottom" id="SjK-sU-dT2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SiB-kw-uls" secondAttribute="trailing" constant="31" id="W1v-Zf-abh"/>
+                            <constraint firstItem="SiB-kw-uls" firstAttribute="leading" secondItem="vFO-xX-q51" secondAttribute="leadingMargin" constant="31" id="b0f-CA-jCE"/>
+                            <constraint firstItem="SiB-kw-uls" firstAttribute="top" secondItem="AvU-0i-hTg" secondAttribute="bottom" constant="44" id="c7q-c3-xEe"/>
+                            <constraint firstItem="5eY-ny-ghR" firstAttribute="top" secondItem="SiB-kw-uls" secondAttribute="bottom" constant="475" id="oUv-xn-m70"/>
+                            <constraint firstAttribute="trailing" secondItem="FHo-hd-6l2" secondAttribute="trailing" id="qdf-JJ-4lY"/>
+                            <constraint firstItem="5eY-ny-ghR" firstAttribute="top" secondItem="AII-Vk-4Fe" secondAttribute="bottom" constant="-8" id="v3c-di-xcV"/>
+                            <constraint firstAttribute="trailing" secondItem="AII-Vk-4Fe" secondAttribute="trailing" constant="8" id="zPq-3F-ovO"/>
+                        </constraints>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="Herd_Dialog_Image_View" destination="SiB-kw-uls" id="uDd-BW-jhf"/>
+                        <outlet property="Herd_Welcome_Dialog_Container_View" destination="AII-Vk-4Fe" id="frW-ld-mw2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4HF-hC-5Eb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="153" y="-287"/>
+        </scene>
+        <!--Welcome Dialog Container View-->
+        <scene sceneID="VHq-F9-7QA">
+            <objects>
+                <viewController title="Welcome Dialog Container View" id="0nx-71-0wp" customClass="Welcome_Dialog_Container_View" customModule="Herd" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pHK-FH-Tse"/>
+                        <viewControllerLayoutGuide type="bottom" id="pl3-Vm-RcE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Omh-i8-kYB">
+                        <rect key="frame" x="0.0" y="0.0" width="359" height="289"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" alpha="0.71999999999999997" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="89z-fe-jtr">
+                                <rect key="frame" x="0.0" y="0.0" width="359" height="289"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Connect with your herd and share your thoughts, ideas, or just something funny. " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcx-Zy-LgU" userLabel="Connect_With_Your_Herd_Text">
+                                        <rect key="frame" x="8" y="2" width="343" height="144"/>
+                                        <color key="textColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="FuturaPT-Light" family="Futura PT" pointSize="31"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="At herd, we are dedicated to creating a welcoming environment for everyone. read more about our mission here" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1j-GX-aVd" userLabel="Herd_Mission_Statement_Text">
+                                        <rect key="frame" x="8" y="127" width="343" height="82"/>
+                                        <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="FuturaPT-Light" family="Futura PT" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkY-CC-ENF" userLabel="Follow_The_Herd_Button">
+                                        <rect key="frame" x="145" y="209" width="202" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33" id="219-4p-3lX"/>
+                                            <constraint firstAttribute="width" constant="202" id="uYw-o3-m9F"/>
+                                        </constraints>
+                                        <state key="normal" image="Follow The Herd Button">
+                                            <color key="titleColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Follow_The_Herd_Button:" destination="0nx-71-0wp" eventType="touchUpInside" id="Sqy-ro-fZ2"/>
+                                            <segue destination="RMc-I0-I22" kind="presentation" modalTransitionStyle="crossDissolve" id="Ojw-1p-MDt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZW6-Dk-IKq" userLabel="Cancel_Button">
+                                        <rect key="frame" x="26" y="209" width="111" height="33"/>
+                                        <state key="normal" image="Cancel Button">
+                                            <color key="titleColor" red="0.7803921568627451" green="0.93725490196078431" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Cancel_Button:" destination="0nx-71-0wp" eventType="touchUpInside" id="Hij-25-jLa"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="By continuing you agree to the terms and conditions" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Bz-rh-U8N" userLabel="Herd_Mission_Statement_Text">
+                                        <rect key="frame" x="9" y="243" width="343" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="TsI-uE-Nab"/>
+                                            <constraint firstAttribute="width" constant="343" id="fRG-VQ-3ZY"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="FuturaPT-Light" family="Futura PT" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="v1j-GX-aVd" secondAttribute="bottom" constant="80" id="5n3-mI-VPd"/>
+                                    <constraint firstItem="v1j-GX-aVd" firstAttribute="leading" secondItem="89z-fe-jtr" secondAttribute="leading" constant="8" id="678-Dh-dzU"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Bz-rh-U8N" secondAttribute="trailing" constant="7" id="COT-k9-SKJ"/>
+                                    <constraint firstItem="bcx-Zy-LgU" firstAttribute="leading" secondItem="89z-fe-jtr" secondAttribute="leading" constant="8" id="Jc3-tp-WCh"/>
+                                    <constraint firstItem="v1j-GX-aVd" firstAttribute="top" secondItem="89z-fe-jtr" secondAttribute="top" constant="127" id="KCw-wl-96n"/>
+                                    <constraint firstAttribute="trailing" secondItem="v1j-GX-aVd" secondAttribute="trailing" constant="8" id="LAI-I5-D1P"/>
+                                    <constraint firstAttribute="bottom" secondItem="6Bz-rh-U8N" secondAttribute="bottom" constant="14" id="WAs-4p-73N"/>
+                                    <constraint firstAttribute="trailing" secondItem="bcx-Zy-LgU" secondAttribute="trailing" constant="8" id="ZJ8-L2-T8q"/>
+                                    <constraint firstItem="6Bz-rh-U8N" firstAttribute="leading" secondItem="89z-fe-jtr" secondAttribute="leading" constant="9" id="gmk-R7-DcN"/>
+                                    <constraint firstItem="jkY-CC-ENF" firstAttribute="leading" secondItem="ZW6-Dk-IKq" secondAttribute="trailing" constant="8" symbolic="YES" id="iEJ-Oe-Ba5"/>
+                                    <constraint firstItem="6Bz-rh-U8N" firstAttribute="leading" secondItem="89z-fe-jtr" secondAttribute="leading" constant="9" id="ipZ-Ye-zyp"/>
+                                    <constraint firstItem="ZW6-Dk-IKq" firstAttribute="bottom" secondItem="jkY-CC-ENF" secondAttribute="bottom" id="lVF-Uo-yBr"/>
+                                    <constraint firstItem="6Bz-rh-U8N" firstAttribute="top" secondItem="ZW6-Dk-IKq" secondAttribute="bottom" constant="1" id="lrY-6b-w0f"/>
+                                    <constraint firstItem="bcx-Zy-LgU" firstAttribute="top" secondItem="89z-fe-jtr" secondAttribute="top" constant="2" id="mZ6-gt-v1D"/>
+                                    <constraint firstAttribute="trailing" secondItem="jkY-CC-ENF" secondAttribute="trailing" constant="12" id="nzB-da-UUN"/>
+                                    <constraint firstAttribute="bottom" secondItem="6Bz-rh-U8N" secondAttribute="bottom" constant="14" id="oTb-99-5KU"/>
+                                    <constraint firstItem="jkY-CC-ENF" firstAttribute="top" secondItem="v1j-GX-aVd" secondAttribute="bottom" id="r1L-dP-iUi"/>
+                                    <constraint firstItem="ZW6-Dk-IKq" firstAttribute="leading" secondItem="89z-fe-jtr" secondAttribute="leading" constant="26" id="rdS-Ob-K4o"/>
+                                    <constraint firstAttribute="bottom" secondItem="bcx-Zy-LgU" secondAttribute="bottom" constant="143" id="sEc-Pp-6o9"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Bz-rh-U8N" secondAttribute="trailing" constant="7" id="xg0-hC-5FR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="89z-fe-jtr" firstAttribute="top" secondItem="Omh-i8-kYB" secondAttribute="top" id="Nbe-GV-3XV"/>
+                            <constraint firstAttribute="bottom" secondItem="89z-fe-jtr" secondAttribute="bottom" id="UMG-jW-9UR"/>
+                            <constraint firstAttribute="trailing" secondItem="89z-fe-jtr" secondAttribute="trailing" id="eWV-ec-lp7"/>
+                            <constraint firstItem="89z-fe-jtr" firstAttribute="leading" secondItem="Omh-i8-kYB" secondAttribute="leading" id="xyL-FH-LHD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="CancelButton" destination="ZW6-Dk-IKq" id="MSD-wF-zln"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jp2-bN-4Pm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="926" y="-287"/>
+        </scene>
+        <!--Hot or New Post Table View-->
+        <scene sceneID="Wf6-eC-8ly">
+            <objects>
+                <tableViewController id="uEi-0w-Eh2" customClass="Hot_or_New_Post_TableView" customModule="Herd" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="127" sectionHeaderHeight="28" sectionFooterHeight="28" id="2nQ-B2-5Ij">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="127" id="yQp-4Y-3aS" customClass="PostCell" customModule="Herd" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="127"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yQp-4Y-3aS" id="RLg-YV-CjP">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="126.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryh-an-m0u" userLabel="Post Body">
+                                            <rect key="frame" x="8" y="0.0" width="288" height="92"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="92" id="TcA-bm-Ld3"/>
+                                                <constraint firstAttribute="width" constant="288" id="lzq-gO-Y70"/>
+                                            </constraints>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qe-2r-ves" userLabel="Downvote Button">
+                                            <rect key="frame" x="316" y="86" width="47" height="35"/>
+                                            <state key="normal" image="Downvote"/>
+                                            <connections>
+                                                <action selector="Downvote_Button_Tapped:" destination="yQp-4Y-3aS" eventType="touchUpInside" id="Zxd-GR-nSM"/>
+                                            </connections>
+                                        </button>
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Y sec" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUz-n5-b7i" userLabel="Time Stamp">
+                                            <rect key="frame" x="8" y="98" width="57" height="20"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Herdmoji" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VPV-ah-xTL" userLabel="Herdmoji">
+                                            <rect key="frame" x="45" y="99" width="98" height="19"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="8" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beB-kX-GdL" userLabel="Upvote Count">
+                                            <rect key="frame" x="329" y="48" width="19" height="30"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mQ-N8-Fif">
+                                            <rect key="frame" x="316" y="8" width="47" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="jk2-sX-JGt"/>
+                                            </constraints>
+                                            <state key="normal" image="Upvote"/>
+                                            <connections>
+                                                <action selector="Upvote_Button_Tapped:" destination="yQp-4Y-3aS" eventType="touchUpInside" id="5CJ-GM-NTL"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="beB-kX-GdL" secondAttribute="trailing" constant="19" id="0wV-yW-mUX"/>
+                                        <constraint firstItem="beB-kX-GdL" firstAttribute="top" secondItem="6mQ-N8-Fif" secondAttribute="bottom" constant="5" id="2m2-rW-GZY"/>
+                                        <constraint firstItem="6mQ-N8-Fif" firstAttribute="leading" secondItem="ryh-an-m0u" secondAttribute="trailing" constant="20" id="6d9-1Z-E5M"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="1qe-2r-ves" secondAttribute="bottom" constant="-2.5" id="GqD-OX-nhN"/>
+                                        <constraint firstItem="1qe-2r-ves" firstAttribute="top" secondItem="beB-kX-GdL" secondAttribute="bottom" constant="8" symbolic="YES" id="H1A-hg-okx"/>
+                                        <constraint firstItem="ryh-an-m0u" firstAttribute="top" secondItem="RLg-YV-CjP" secondAttribute="top" id="INk-bQ-RZT"/>
+                                        <constraint firstItem="KUz-n5-b7i" firstAttribute="top" secondItem="ryh-an-m0u" secondAttribute="bottom" constant="6" id="Udi-4Q-W4V"/>
+                                        <constraint firstItem="6mQ-N8-Fif" firstAttribute="top" secondItem="RLg-YV-CjP" secondAttribute="topMargin" id="VD2-I5-byc"/>
+                                        <constraint firstItem="1qe-2r-ves" firstAttribute="leading" secondItem="6mQ-N8-Fif" secondAttribute="leading" id="eiP-aY-DN8"/>
+                                        <constraint firstItem="ryh-an-m0u" firstAttribute="leading" secondItem="KUz-n5-b7i" secondAttribute="leading" id="f7k-lK-fhB"/>
+                                        <constraint firstItem="1qe-2r-ves" firstAttribute="trailing" secondItem="6mQ-N8-Fif" secondAttribute="trailing" id="flQ-wQ-LFb"/>
+                                        <constraint firstItem="beB-kX-GdL" firstAttribute="leading" secondItem="ryh-an-m0u" secondAttribute="trailing" constant="33" id="ofK-AQ-beb"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="6mQ-N8-Fif" secondAttribute="trailing" constant="4" id="sDu-F6-e71"/>
+                                        <constraint firstItem="beB-kX-GdL" firstAttribute="centerY" secondItem="RLg-YV-CjP" secondAttribute="centerY" id="tin-jd-k7I"/>
+                                        <constraint firstItem="ryh-an-m0u" firstAttribute="leading" secondItem="RLg-YV-CjP" secondAttribute="leadingMargin" id="xmC-gP-Msv"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="PostCell"/>
+                                <connections>
+                                    <outlet property="Downvote_Button" destination="1qe-2r-ves" id="taM-h4-r7t"/>
+                                    <outlet property="Herdmoji" destination="VPV-ah-xTL" id="fYU-cd-mHT"/>
+                                    <outlet property="PostBody" destination="ryh-an-m0u" id="R8N-0n-lIC"/>
+                                    <outlet property="Timestamp" destination="KUz-n5-b7i" id="BRS-7U-DFA"/>
+                                    <outlet property="Upvote_Button" destination="6mQ-N8-Fif" id="ylD-xF-Qze"/>
+                                    <outlet property="Upvote_Count" destination="beB-kX-GdL" id="Z2Y-KS-3r5"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="MyM-rY-c3U">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="rul-0s-4IU">
+                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Hot"/>
+                                <segment title="New"/>
+                            </segments>
+                        </segmentedControl>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="PostTableView" destination="2nQ-B2-5Ij" id="5MH-zf-Zpo"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WYB-zm-WcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xBk-c0-P89">
+                    <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                </button>
+            </objects>
+            <point key="canvasLocation" x="2688.8000000000002" y="-287.40629685157421"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bcG-BO-31F">
+            <objects>
+                <navigationController id="RMc-I0-I22" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Pw-KJ-116">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uEi-0w-Eh2" kind="relationship" relationship="rootViewController" id="h9F-2m-rto"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9xr-qF-o6P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1737" y="-287"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Cancel Button" width="113" height="33"/>
+        <image name="Downvote" width="22" height="15"/>
+        <image name="Follow The Herd Button" width="228" height="33"/>
+        <image name="Herd Dialog" width="397" height="182"/>
+        <image name="Herdmoji Background" width="414" height="736"/>
+        <image name="Upvote" width="22" height="15"/>
+    </resources>
+</document>
