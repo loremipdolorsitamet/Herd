@@ -21,6 +21,7 @@ pod 'AMScrollingNavbar'
 pod 'RevealingSplashView'
 pod 'SJFluidSegmentedControl', '~> 1.0'
 pod 'AFDateHelper', '~> 4.2.1'
+pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
 
 end
 
