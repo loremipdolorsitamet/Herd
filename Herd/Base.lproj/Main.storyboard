@@ -360,10 +360,10 @@
             </objects>
             <point key="canvasLocation" x="2688.8000000000002" y="-287.40629685157421"/>
         </scene>
-        <!--View Controller-->
+        <!--Compose Post View-->
         <scene sceneID="W4F-5L-llL">
             <objects>
-                <viewController id="dcj-xP-PGX" sceneMemberID="viewController">
+                <viewController id="dcj-xP-PGX" customClass="Compose_Post_View" customModule="Herd" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EbG-vH-42R"/>
                         <viewControllerLayoutGuide type="bottom" id="QEj-cE-pDm"/>
@@ -376,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JI8-j1-nfH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3623" y="-287"/>
+            <point key="canvasLocation" x="3439" y="-287"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bcG-BO-31F">
