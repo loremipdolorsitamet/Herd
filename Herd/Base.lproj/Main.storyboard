@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17A291m" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AoU-es-BsK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2073" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AoU-es-BsK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -177,7 +177,6 @@
                                         </state>
                                         <connections>
                                             <action selector="Follow_The_Herd_Button:" destination="0nx-71-0wp" eventType="touchUpInside" id="Sqy-ro-fZ2"/>
-                                            <segue destination="RMc-I0-I22" kind="presentation" modalTransitionStyle="crossDissolve" id="Ojw-1p-MDt"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZW6-Dk-IKq" userLabel="Cancel_Button">
@@ -235,11 +234,12 @@
                     </view>
                     <connections>
                         <outlet property="CancelButton" destination="ZW6-Dk-IKq" id="MSD-wF-zln"/>
+                        <segue destination="RMc-I0-I22" kind="presentation" identifier="toPostView" id="DHU-gj-49H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jp2-bN-4Pm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="926" y="-287"/>
+            <point key="canvasLocation" x="958" y="-287"/>
         </scene>
         <!--Hot or New Post Table View-->
         <scene sceneID="Wf6-eC-8ly">
@@ -344,6 +344,7 @@
                                 <segment title="Hot"/>
                                 <segment title="New"/>
                             </segments>
+                            <color key="tintColor" red="0.7843137255" green="0.93333333330000001" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
                         </segmentedControl>
                     </navigationItem>
                     <connections>
@@ -351,19 +352,79 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WYB-zm-WcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xBk-c0-P89">
-                    <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
-                </button>
             </objects>
-            <point key="canvasLocation" x="2688.8000000000002" y="-287.40629685157421"/>
+            <point key="canvasLocation" x="3628" y="-287.40629685157421"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Create Post-->
+        <scene sceneID="ag3-wc-aZl">
+            <objects>
+                <viewController storyboardIdentifier="CreatePost" id="UdT-c0-JvJ" customClass="CreatePost" customModule="Herd" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W1U-1j-tTd"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cbk-Sd-f5g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Ek-zE-mZx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U9I-Qg-1ih">
+                                <rect key="frame" x="0.0" y="54" width="375" height="613"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfC-kd-MVm" userLabel="Post Body">
+                                        <rect key="frame" x="16" y="19" width="343" height="304"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.78431372549019607" green="0.93333333333333335" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstItem="AfC-kd-MVm" firstAttribute="leading" secondItem="U9I-Qg-1ih" secondAttribute="leading" constant="16" id="34P-Fm-xXb"/>
+                                    <constraint firstAttribute="trailing" secondItem="AfC-kd-MVm" secondAttribute="trailing" constant="16" id="afd-fd-lwE"/>
+                                    <constraint firstAttribute="bottom" secondItem="AfC-kd-MVm" secondAttribute="bottom" constant="290" id="st5-X4-0cu"/>
+                                    <constraint firstItem="AfC-kd-MVm" firstAttribute="top" secondItem="U9I-Qg-1ih" secondAttribute="top" constant="19" id="uL8-Kz-bc6"/>
+                                </constraints>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" backIndicatorImage="Cancel Button" translatesAutoresizingMaskIntoConstraints="NO" id="DUd-ww-OEa">
+                                <rect key="frame" x="0.0" y="10" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="JLu-uH-kSr"/>
+                                </constraints>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="U9I-Qg-1ih" firstAttribute="top" secondItem="DUd-ww-OEa" secondAttribute="bottom" id="2Ll-ID-zVE"/>
+                            <constraint firstAttribute="trailing" secondItem="DUd-ww-OEa" secondAttribute="trailing" id="HiV-HU-7Rm"/>
+                            <constraint firstAttribute="trailing" secondItem="U9I-Qg-1ih" secondAttribute="trailing" id="Pnv-h7-38s"/>
+                            <constraint firstItem="DUd-ww-OEa" firstAttribute="top" secondItem="3Ek-zE-mZx" secondAttribute="top" constant="10" id="RZ5-So-O4e"/>
+                            <constraint firstItem="DUd-ww-OEa" firstAttribute="leading" secondItem="3Ek-zE-mZx" secondAttribute="leading" id="jkb-fs-1x6"/>
+                            <constraint firstItem="Cbk-Sd-f5g" firstAttribute="top" secondItem="U9I-Qg-1ih" secondAttribute="bottom" id="pLF-AF-t5a"/>
+                            <constraint firstItem="U9I-Qg-1ih" firstAttribute="leading" secondItem="3Ek-zE-mZx" secondAttribute="leading" id="tMj-hx-WXu"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="d2L-hJ-Kab"/>
+                    <connections>
+                        <outlet property="navBar" destination="DUd-ww-OEa" id="jNt-d1-xeA"/>
+                        <outlet property="postBody" destination="AfC-kd-MVm" id="0au-Cm-mZo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XsW-eq-1lp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4540" y="-287.40629685157421"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="bcG-BO-31F">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9xr-qF-o6P" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="RMc-I0-I22" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Pw-KJ-116">
+                    <tabBarItem key="tabBarItem" title="Item" id="TiC-Ej-qqc"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7Pw-KJ-116">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -371,9 +432,8 @@
                         <segue destination="uEi-0w-Eh2" kind="relationship" relationship="rootViewController" id="h9F-2m-rto"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9xr-qF-o6P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1737" y="-287"/>
+            <point key="canvasLocation" x="2676" y="-287.40629685157421"/>
         </scene>
     </scenes>
     <resources>
@@ -384,4 +444,5 @@
         <image name="Herdmoji Background" width="414" height="736"/>
         <image name="Upvote" width="22" height="15"/>
     </resources>
+    <color key="tintColor" red="0.7843137255" green="0.93333333330000001" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
 </document>

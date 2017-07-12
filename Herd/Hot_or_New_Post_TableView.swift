@@ -7,7 +7,11 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import GeoFire
 import Floaty
+import SwiftLocation
+import CoreLocation
 
 class Hot_or_New_Post_TableView: UITableViewController {
     
@@ -15,27 +19,69 @@ class Hot_or_New_Post_TableView: UITableViewController {
     var returnedIndex = Int() //Current Index of Cell
 
     override func viewDidLoad() {
+        
+        getAndSetLocation()
+        setUpFloatingButton()
+        
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+    }
+    
+    func setUpFloatingButton() {
         
         //Set up floating action button
         let floaty = Floaty()
         /*
-        floaty.addItem("I got a handler", icon: UIImage(named: "icon")!, handler: { item in
-            let alert = UIAlertController(title: "Hey", message: "I'm hungry...", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Me too", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            floaty.sticky = true
-        })
+         floaty.addItem("I got a handler", icon: UIImage(named: "icon")!, handler: { item in
+         let alert = UIAlertController(title: "Hey", message: "I'm hungry...", preferredStyle: .alert)
+         alert.addAction(UIAlertAction(title: "Me too", style: .default, handler: nil))
+         self.present(alert, animated: true, completion: nil)
+         floaty.sticky = true
+         })
          */
         floaty.friendlyTap = true
         floaty.sticky = true
         self.view.addSubview(floaty)
+        
+    }
+    
+    func getAndSetLocation() {
+        
+        let geofireRef = Database.database().reference(withPath: "user_location")
+        let geoFire = GeoFire(firebaseRef: geofireRef)
+        let uid = UserDefaults.standard.value(forKey: "uid") as! String
+        
+        /*
+         Push users location to db
+         Update user defauts current_location_lat and current_location_long
+         Use the user defaults value to fire qeofire query for posts in vicinty
+         */
+        
+        //Get location using GPS chip
+        Location.getLocation(accuracy: .neighborhood, frequency: .oneShot, success: { (_, location) in
+            print("Successfully pulled location:  \(location)")
+            //Store Location into UserDefaults
+            let defaults = UserDefaults.standard
+            defaults.setValue(Double(location.coordinate.latitude), forKey: "current_location_lat")
+            defaults.setValue(Double(location.coordinate.longitude), forKey: "current_location_long")
+            
+            //Store location in db using GeoFire with callback
+            geoFire?.setLocation(CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), forKey: uid) { (error) in
+                if (error != nil) {
+                    //Show an error message of some sorts
+                    print("An error occured: \(error)")
+                } else {
+                    //Fire off query
+                   
+                }
+            }
+
+        }) { (request, last, error) in
+            request.cancel() // stop continous location monitoring on error
+            //Show an error message of some sorts
+            print("Location monitoring failed due to an error \(error)")
+        }
         
     }
 

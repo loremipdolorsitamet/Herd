@@ -54,6 +54,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GeoFire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GoogleToolboxForMac.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -107,32 +112,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>07468663887A65BCB21B415BFF30BC0A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>0758DDF485BA90A8C85A3B788064A721</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>12DE1D95308BE90BCECC3A5F76904499</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>1613271357771814C71601D90B787D94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2E1F289CD22FE42AE3CB731CD2E98A18</key>
+		<key>2E23A60336FB5FD430EE5BA9290DFF25</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -172,22 +157,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9D7CAFF27D0113FF80E879F279DAAC16</key>
+		<key>AB0C20108520E6698DD16D147EF9C4D1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B1F956DBE333ECF819CBD65DFB66055F</key>
+		<key>ABB5F033BB65A5EB87FEFC0C1C268904</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B487210E740CC8DB5267507B4B64E362</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B4CC71B3394A4822693797551BE96CAE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C1FF267DAF2124367F4A5D414DD84372</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -202,7 +192,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>D30EB3664422180BD15DFD1EE1A76D66</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D442A1063E1FD2A0AB8ACF96C63173A4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D6C64CB8EE51EBB94F66E4850B554F19</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>EF1ABE20DAA23760FBF0359740C1F0B9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F37F98C8E24BD898EA0B3ED9F29B5222</key>
 		<dict>
 			<key>primary</key>
 			<true/>

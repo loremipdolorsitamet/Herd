@@ -12,6 +12,7 @@
 		F40A0B291F0F42CB00D8F907 /* Login_Location_Pulled.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40A0B281F0F42CB00D8F907 /* Login_Location_Pulled.swift */; };
 		F40A0B2D1F0FF87500D8F907 /* FuturaPTLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = F40A0B2C1F0FF87500D8F907 /* FuturaPTLight.otf */; };
 		F43677BF1F132B5F005AF4C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43677BE1F132B5F005AF4C5 /* GoogleService-Info.plist */; };
+		F44480BF1F15BFB6007CFF8B /* CreatePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44480BE1F15BFB6007CFF8B /* CreatePost.swift */; };
 		F4616C851EFCF8DF007EE41F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4616C841EFCF8DF007EE41F /* AppDelegate.swift */; };
 		F4616C8E1EFCF8DF007EE41F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4616C8C1EFCF8DF007EE41F /* Main.storyboard */; };
 		F4616C901EFCF8DF007EE41F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4616C8F1EFCF8DF007EE41F /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		F40A0B281F0F42CB00D8F907 /* Login_Location_Pulled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login_Location_Pulled.swift; sourceTree = "<group>"; };
 		F40A0B2C1F0FF87500D8F907 /* FuturaPTLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaPTLight.otf; sourceTree = "<group>"; };
 		F43677BE1F132B5F005AF4C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F44480BE1F15BFB6007CFF8B /* CreatePost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePost.swift; sourceTree = "<group>"; };
 		F4616C811EFCF8DF007EE41F /* Herd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Herd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4616C841EFCF8DF007EE41F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4616C8D1EFCF8DF007EE41F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		F4616C831EFCF8DF007EE41F /* Herd */ = {
 			isa = PBXGroup;
 			children = (
+				F44480BE1F15BFB6007CFF8B /* CreatePost.swift */,
 				F4616C841EFCF8DF007EE41F /* AppDelegate.swift */,
 				F40A0B261F0F365B00D8F907 /* Login_Location_Pending.swift */,
 				F40A0B281F0F42CB00D8F907 /* Login_Location_Pulled.swift */,
@@ -245,6 +248,7 @@
 				F4616C851EFCF8DF007EE41F /* AppDelegate.swift in Sources */,
 				F4D622801F1155BF00820C3C /* Navigation_Controller.swift in Sources */,
 				F40A0B291F0F42CB00D8F907 /* Login_Location_Pulled.swift in Sources */,
+				F44480BF1F15BFB6007CFF8B /* CreatePost.swift in Sources */,
 				F40A0B271F0F365B00D8F907 /* Login_Location_Pending.swift in Sources */,
 				F4D622821F1155F500820C3C /* Hot_or_New_Post_TableView.swift in Sources */,
 			);

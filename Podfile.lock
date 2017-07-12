@@ -11,6 +11,9 @@ PODS:
   - Firebase/Core (4.0.0):
     - FirebaseAnalytics (= 4.0.0)
     - FirebaseCore (= 4.0.0)
+  - Firebase/Database (4.0.0):
+    - Firebase/Core
+    - FirebaseDatabase (= 4.0.0)
   - FirebaseAnalytics (4.0.0):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -21,10 +24,14 @@ PODS:
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (4.0.0):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseDatabase (4.0.0):
+    - FirebaseAnalytics (~> 4.0)
   - FirebaseInstanceID (2.0.0):
     - FirebaseCore (~> 4.0)
   - Floaty (3.0.0)
   - FontAwesome.swift (1.2.0)
+  - GeoFire (2.0.0):
+    - Firebase/Database (~> 4.0)
   - GoogleToolboxForMac/DebugUtils (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/Defines (2.1.1)
@@ -56,6 +63,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Floaty (~> 3.0.0)
   - FontAwesome.swift
+  - GeoFire (from `https://github.com/firebase/geofire-objc.git`)
   - Hero
   - LTMorphingLabel
   - RevealingSplashView
@@ -66,11 +74,16 @@ DEPENDENCIES:
   - XLActionController
 
 EXTERNAL SOURCES:
+  GeoFire:
+    :git: https://github.com/firebase/geofire-objc.git
   Spring:
     :branch: swift3
     :git: https://github.com/MengTo/Spring.git
 
 CHECKOUT OPTIONS:
+  GeoFire:
+    :commit: 96d6463f59016785f9c5ae9b669019c44786a23f
+    :git: https://github.com/firebase/geofire-objc.git
   Spring:
     :commit: 8201b5c93bd7ebdf4cd18160bcde1e6e88c2be64
     :git: https://github.com/MengTo/Spring.git
@@ -79,14 +92,16 @@ SPEC CHECKSUMS:
   AFDateHelper: 0f9588a442b4d7ef862568ae5d40ab883672efb5
   AMScrollingNavbar: 6a2c01a912b96aa36581268759f18d85b3d1575e
   Fakery: 97b99c23937d2e025d9135c75e2b17351ccd5031
-  FCAlertView: '083c067bfd98f147abf5a66fe0e31cefac7bc809'
+  FCAlertView: 083c067bfd98f147abf5a66fe0e31cefac7bc809
   Firebase: 284eea779b73fdff309791817da7c68bff8dd572
   FirebaseAnalytics: 6f08e746f7d66f5452931bc2e822b5df9c66b64a
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
   FirebaseCore: 85ad466044c2f013cdb167f85d426d15b128114a
+  FirebaseDatabase: d829b3a8c3e2ac7a16773c5df226966b0805dfc2
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   Floaty: d1be5d323094f0de422bb615452d00ba26ac74dd
   FontAwesome.swift: 60063e3f19ba4801155d4b0f2334ab7585763ab3
+  GeoFire: 02f02683e09367c2eee073c6b09c794da19833ee
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
   Hero: d3c6f4dd80cdcdbb339be64e57ae3b5c3ab9938c
@@ -98,6 +113,6 @@ SPEC CHECKSUMS:
   SwiftyButton: 4c9b61c499f172971a1b8c2eebbbdc20a26d8a08
   XLActionController: 57fe0ce1642e2eed971b188b490762345fdbf963
 
-PODFILE CHECKSUM: 6851e905178943613502a9dd03d65512551ca464
+PODFILE CHECKSUM: 523aadfb6886a4345b7df2283d1986ac788c04ea
 
 COCOAPODS: 1.2.1
