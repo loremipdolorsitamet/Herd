@@ -42,7 +42,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
          */
         floaty.friendlyTap = true
         floaty.sticky = true
-        floaty.buttonColor = UIColor.init(red: 215/255, green: 244/255, blue: 220/255, alpha: 1)
+        floaty.buttonColor = GlobalConstants.accentColor
         
         self.view.addSubview(floaty)
         
