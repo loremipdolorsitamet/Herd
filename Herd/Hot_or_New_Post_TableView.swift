@@ -21,7 +21,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
     override func viewDidLoad() {
         
         getAndSetLocation()
-        setUpFloatingButton()
+        //setUpFloatingButton()
         
         super.viewDidLoad()
 
