@@ -13,11 +13,12 @@ do them.
 
 Actions to keep doing:
 We stayed on top of our tasks, and were good about meeting consistently during the week so we could help each other if needed.  
-No tasks were left until the very end of the sprint.
+All tasks were started before the very end of the sprint.
 
 Work completed/not completed:
-We completed the authentication of the user's location, the segue to the create post view controller, and the transitions 
-between view controllers using the hero cocoapod.
+We completed the authentication of the user's location and the segue to the create post view controller. 
+We are still working on using the hero cocoapod to make transitions smoother and make the views interactive and using GeoFire 
+to validate user's locations.
 
 Work completion rate:
 Burnup chart will be provided in an external document.
