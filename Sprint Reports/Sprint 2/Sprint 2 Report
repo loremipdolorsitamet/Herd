@@ -3,17 +3,22 @@ Group and Product: Herd
 7/17/16
 
 Actions to stop doing:
-
+We added a task during the sprint when we should have added it at the begging of the next sprint.  We didn't update the SCRUM
+board as often as we should since we didn't have a meeting over the weekend.  During the SCRUM meetings we need to let each
+other talk without interruption since the goal is to let everyone get they're thoughts out.
 
 Actions to start doing:
-
+We need to do a better job during the initial sprint planning session of creating all necessary tasks and assigning who will
+do them.
 
 Actions to keep doing:
-We stayed on top of our tasks, and were good about meeting consistently so we could help each other if needed.  
+We stayed on top of our tasks, and were good about meeting consistently during the week so we could help each other if needed.  
 No tasks were left until the very end of the sprint.
 
 Work completed/not completed:
-
+We completed the authentication of the user's location, the segue to the create post view controller, and the transitions 
+between view controllers using the hero cocoapod.
 
 Work completion rate:
-
+Burnup chart will be provided in an external document.
+Link to final trello board: https://trello.com/b/XY7YW7Vb/sprint-2-scrum-planning-doc
