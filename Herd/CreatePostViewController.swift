@@ -72,12 +72,6 @@ class CreatePostViewController: UIViewController, UITextViewDelegate, FCAlertVie
     
     
     func publishToDatabase() {
-        
-        //Get location data
-        //Get current time in timeSince1970
-        //Generate random post id from Firebase
-        //
-        
         if let locationLat = UserDefaults.standard.value(forKey: "current_location_lat") as? Double {
             if let locationLong = UserDefaults.standard.value(forKey: "current_location_long") as? Double {
                 if let uid = UserDefaults.standard.value(forKey: "uid") as? String {
@@ -94,7 +88,7 @@ class CreatePostViewController: UIViewController, UITextViewDelegate, FCAlertVie
                 let postBodyText = self.PostBody.text
                 
                 //Geofire Reference
-                let geofireRef = Database.database().reference(withPath: "post_locations/")
+                let geofireRef = Database.database().reference(withPath: "post_location/")
                 let geoFire = GeoFire(firebaseRef: geofireRef)
                 
                 //User Reference

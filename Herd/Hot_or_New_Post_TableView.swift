@@ -11,43 +11,95 @@ import FirebaseDatabase
 import GeoFire
 import Floaty
 import SwiftLocation
+import SwiftDate
 import CoreLocation
 
 class Hot_or_New_Post_TableView: UITableViewController {
     
     @IBOutlet var PostTableView: UITableView!
     var returnedIndex = Int() //Current Index of Cell
+    var postList = [post]()
 
     override func viewDidLoad() {
         
         getAndSetLocation()
-        //setUpFloatingButton()
         
         super.viewDidLoad()
 
         
     }
     
-    func setUpFloatingButton() {
+    func getPosts(center: CLLocation) {
         
-        //Set up floating action button
-        let floaty = Floaty()
-        /*
-         floaty.addItem("I got a handler", icon: UIImage(named: "icon")!, handler: { item in
-         let alert = UIAlertController(title: "Hey", message: "I'm hungry...", preferredStyle: .alert)
-         alert.addAction(UIAlertAction(title: "Me too", style: .default, handler: nil))
-         self.present(alert, animated: true, completion: nil)
-         floaty.sticky = true
-         })
-         */
-        floaty.friendlyTap = true
-        floaty.sticky = true
-        floaty.buttonColor = GlobalConstants.accentColor
+        let geofireRef = Database.database().reference(withPath: "post_location/")
+        let postRef = Database.database().reference(withPath: "posts")
+        let geoFire = GeoFire(firebaseRef: geofireRef)
         
-        self.view.addSubview(floaty)
+        var circleQuery = geoFire?.query(at: center, withRadius: 200.0)
+        
+        var circleQueryHandler = circleQuery?.observe(.keyEntered, with: { (key: String!, location: CLLocation!) in
+
+            postRef.child(key).observeSingleEvent(of: .value, with: {(postData) in
+            
+                let postToAppend = post()
+                
+                if let postDataDictionary = postData.value as? [String:AnyObject] {
+                    
+                    if let postBody = postDataDictionary["body"] as? String {
+    
+                        if let postTime = postDataDictionary["timestamp"] as? String {
+
+                            if let postUpvote = postDataDictionary["upvote"] as? Int {
+
+                                if let postDownvote = postDataDictionary["downvote"] as? Int {
+                                
+                                    postToAppend.body = postBody
+                                    postToAppend.timestamp = postTime
+                                    postToAppend.upvote = postUpvote
+                                    postToAppend.downvote = postDownvote
+                                    
+                                    self.postList.append(postToAppend)
+                                    
+                                    self.PostTableView.reloadData()
+                                    
+                                    //Attach observers to upvote
+                                    postRef.child(key).observe(.childChanged, with: {(changedVal) in
+                                        if changedVal.key == "upvote" {
+                                            
+                                            if let upvoteInt = changedVal.value as? Int {
+                                                
+                                                postToAppend.upvote = upvoteInt
+                                                self.PostTableView.reloadData()
+                                            }
+                                            
+                                        } else if changedVal.key == "downvote" {
+                                            
+                                            if let downvoteInt = changedVal.value as? Int {
+                                                
+                                                postToAppend.downvote = downvoteInt
+                                                self.PostTableView.reloadData()
+                                            }
+                                            
+                                        }
+                                    })
+                                }
+                                
+                            }
+                            
+                        }
+                        
+                    }
+   
+                }
+                
+            })
+            
+            
+        })
+        
         
     }
-    
+
     func getAndSetLocation() {
         
         let geofireRef = Database.database().reference(withPath: "user_location")
@@ -74,8 +126,8 @@ class Hot_or_New_Post_TableView: UITableViewController {
                     //Show an error message of some sorts
                     print("An error occured: \(error)")
                 } else {
-                    //Fire off query
-                   
+                    self.getPosts(center: CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
+                   //Fire off query
                 }
             }
 
@@ -87,27 +139,35 @@ class Hot_or_New_Post_TableView: UITableViewController {
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 5
-    }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return self.postList.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         
+        let postData = self.postList[indexPath.item]
+        
+        cell.PostBody.text = postData.body
+        cell.Upvote_Count.text = String(postData.upvote - postData.downvote)
+        
+        //Timestamp formatting 
+        let now = DateInRegion()
+        let timeStamp = DateInRegion(string: postData.timestamp, format: .iso8601(options: .withInternetDateTime), fromRegion: Region.Local())
+        
+        let timeDifference = now.hour - (timeStamp?.hour)!
+        
+        if timeDifference < 1 {
+            
+            cell.Timestamp.text = "< 1 hr ago"
+            
+        } else {
+            
+            cell.Timestamp.text = (String(timeDifference) + " hrs ago")
+        }
 
         return cell
     }

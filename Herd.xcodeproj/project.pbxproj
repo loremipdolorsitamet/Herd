@@ -21,6 +21,7 @@
 		F4934A601F10020B00A2F83E /* Welcome_Dialog_Container_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4934A5F1F10020B00A2F83E /* Welcome_Dialog_Container_View.swift */; };
 		F4A57BFF1F12DC85002E86F7 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A57BFE1F12DC85002E86F7 /* PostCell.swift */; };
 		F4ADBFFF1F1EA82400C02C13 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ADBFFE1F1EA82400C02C13 /* CreatePostViewController.swift */; };
+		F4D114C31F1EF936008B5986 /* PostStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D114C21F1EF936008B5986 /* PostStructure.swift */; };
 		F4D622801F1155BF00820C3C /* Navigation_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D6227F1F1155BF00820C3C /* Navigation_Controller.swift */; };
 		F4D622821F1155F500820C3C /* Hot_or_New_Post_TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D622811F1155F500820C3C /* Hot_or_New_Post_TableView.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		F4934A5F1F10020B00A2F83E /* Welcome_Dialog_Container_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Welcome_Dialog_Container_View.swift; sourceTree = "<group>"; };
 		F4A57BFE1F12DC85002E86F7 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		F4ADBFFE1F1EA82400C02C13 /* CreatePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		F4D114C21F1EF936008B5986 /* PostStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostStructure.swift; sourceTree = "<group>"; };
 		F4D6227F1F1155BF00820C3C /* Navigation_Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation_Controller.swift; sourceTree = "<group>"; };
 		F4D622811F1155F500820C3C /* Hot_or_New_Post_TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hot_or_New_Post_TableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +99,7 @@
 				F4A57BFE1F12DC85002E86F7 /* PostCell.swift */,
 				F4D6227F1F1155BF00820C3C /* Navigation_Controller.swift */,
 				F4D622811F1155F500820C3C /* Hot_or_New_Post_TableView.swift */,
+				F4D114C21F1EF936008B5986 /* PostStructure.swift */,
 				F4616C8F1EFCF8DF007EE41F /* Assets.xcassets */,
 				F40A0B2C1F0FF87500D8F907 /* FuturaPTLight.otf */,
 				F4616C911EFCF8DF007EE41F /* LaunchScreen.storyboard */,
@@ -252,6 +255,7 @@
 				F4A57BFF1F12DC85002E86F7 /* PostCell.swift in Sources */,
 				75467C411F1B029E00F8752B /* Constants.swift in Sources */,
 				F4934A601F10020B00A2F83E /* Welcome_Dialog_Container_View.swift in Sources */,
+				F4D114C31F1EF936008B5986 /* PostStructure.swift in Sources */,
 				753EC5B11F158FA500477726 /* Comment_View.swift in Sources */,
 				F4616C851EFCF8DF007EE41F /* AppDelegate.swift in Sources */,
 				F4D622801F1155BF00820C3C /* Navigation_Controller.swift in Sources */,
