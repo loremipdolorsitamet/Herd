@@ -13,7 +13,6 @@ import UIKit
    Called when the state of the navigation bar is about to change
    */
   @objc optional func scrollingNavigationController(_ controller: ScrollingNavigationController, willChangeState state: NavigationBarState)
-
 }
 
 /**
@@ -79,6 +78,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   open var followers: [UIView] = []
 
   open fileprivate(set) var gestureRecognizer: UIPanGestureRecognizer?
+  fileprivate var sourceTabBar: UITabBar?
   var delayDistance: CGFloat = 0
   var maxDelay: CGFloat = 0
   var scrollableView: UIView?
@@ -111,6 +111,12 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     maxDelay = CGFloat(delay)
     delayDistance = CGFloat(delay)
     scrollingEnabled = true
+
+    // Save TabBar state (the state is changed during the transition and restored on compeltion)
+    if let tab = followers.first(where: { $0 is UITabBar }) as? UITabBar {
+      self.sourceTabBar = UITabBar(frame: tab.frame)
+      self.sourceTabBar?.isTranslucent = tab.isTranslucent
+    }
     self.followers = followers
     self.scrollSpeedFactor = CGFloat(scrollSpeedFactor)
   }
@@ -179,7 +185,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
   /**
    Stop observing the view and reset the navigation bar
-   
+
    - parameter showingNavbar: If true the navbar is show, otherwise it remains in its current state. Defaults to `true`
    */
   open func stopFollowingScrollView(showingNavbar: Bool = true) {
@@ -338,7 +344,19 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   }
 
   private func updateFollowers(_ delta: CGFloat) {
-    followers.forEach { $0.transform = $0.transform.translatedBy(x: 0, y: -delta) }
+    followers.forEach {
+      guard let tabBar = $0 as? UITabBar else {
+        $0.transform = $0.transform.translatedBy(x: 0, y: -delta)
+        return
+      }
+      tabBar.isTranslucent = true
+      tabBar.frame.origin.y += delta * 1.5
+
+      // Set the bar to its original state if it's in its original position
+      if let originalTabBar = sourceTabBar, originalTabBar.frame.origin.y == tabBar.frame.origin.y {
+        tabBar.isTranslucent = originalTabBar.isTranslucent
+      }
+    }
   }
 
   private func updateSizing(_ delta: CGFloat) {
@@ -375,17 +393,18 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     let frame = navigationBar.frame
     var duration = TimeInterval(0)
     var delta = CGFloat(0.0)
-    let distance = delta / (frame.size.height / 2)
 
     // Scroll back down
     let threshold = statusBarHeight - (frame.size.height / 2)
     if navigationBar.frame.origin.y >= threshold {
       delta = frame.origin.y - statusBarHeight
+      let distance = delta / (frame.size.height / 2)
       duration = TimeInterval(abs(distance * 0.2))
       state = .expanded
     } else {
       // Scroll up
       delta = frame.origin.y + deltaLimit
+      let distance = delta / (frame.size.height / 2)
       duration = TimeInterval(abs(distance * 0.2))
       state = .collapsed
     }
@@ -396,7 +415,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       self.updateSizing(delta)
       self.updateFollowers(delta)
       self.updateNavbarAlpha()
-      }, completion: nil)
+    }, completion: nil)
   }
 
   private func updateNavbarAlpha() {
@@ -456,9 +475,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
     return scrollingEnabled
   }
-
+  
   deinit {
     NotificationCenter.default.removeObserver(self)
   }
-
+  
 }

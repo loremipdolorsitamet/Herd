@@ -1,20 +1,20 @@
 PODS:
   - AFDateHelper (4.2.2)
-  - AMScrollingNavbar (3.3.3)
+  - AMScrollingNavbar (3.4.0)
   - Fakery (2.0.0)
   - FCAlertView (1.3.1)
-  - Firebase (4.0.0):
-    - Firebase/Core (= 4.0.0)
-  - Firebase/Auth (4.0.0):
+  - Firebase (4.0.4):
+    - Firebase/Core (= 4.0.4)
+  - Firebase/Auth (4.0.4):
     - Firebase/Core
     - FirebaseAuth (= 4.0.0)
-  - Firebase/Core (4.0.0):
-    - FirebaseAnalytics (= 4.0.0)
-    - FirebaseCore (= 4.0.0)
-  - Firebase/Database (4.0.0):
+  - Firebase/Core (4.0.4):
+    - FirebaseAnalytics (= 4.0.2)
+    - FirebaseCore (= 4.0.4)
+  - Firebase/Database (4.0.4):
     - Firebase/Core
     - FirebaseDatabase (= 4.0.0)
-  - FirebaseAnalytics (4.0.0):
+  - FirebaseAnalytics (4.0.2):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
@@ -22,8 +22,9 @@ PODS:
     - FirebaseAnalytics (~> 4.0)
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseCore (4.0.0):
+  - FirebaseCore (4.0.4):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - nanopb (~> 0.3)
   - FirebaseDatabase (4.0.0):
     - FirebaseAnalytics (~> 4.0)
   - FirebaseInstanceID (2.0.0):
@@ -42,12 +43,18 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
-  - GTMSessionFetcher/Core (1.1.10)
+  - GTMSessionFetcher/Core (1.1.11)
   - Hero (0.3.6)
   - LTMorphingLabel (0.5.0)
-  - RevealingSplashView (0.2.0)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - RevealingSplashView (0.4.0)
   - SJFluidSegmentedControl (1.1.2)
   - Spring (1.0.3)
+  - SwiftDate (4.1.7)
   - SwiftLocation (2.0.7)
   - SwiftyButton (0.6.0)
   - XLActionController (3.0.1):
@@ -69,6 +76,7 @@ DEPENDENCIES:
   - RevealingSplashView
   - SJFluidSegmentedControl (~> 1.0)
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
+  - SwiftDate (~> 4.0)
   - SwiftLocation
   - SwiftyButton
   - XLActionController
@@ -90,29 +98,31 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFDateHelper: 0f9588a442b4d7ef862568ae5d40ab883672efb5
-  AMScrollingNavbar: 6a2c01a912b96aa36581268759f18d85b3d1575e
+  AMScrollingNavbar: 64b3626ebd557cbe4ddf7fdd31c652f02c9b8888
   Fakery: 97b99c23937d2e025d9135c75e2b17351ccd5031
   FCAlertView: 083c067bfd98f147abf5a66fe0e31cefac7bc809
-  Firebase: 284eea779b73fdff309791817da7c68bff8dd572
-  FirebaseAnalytics: 6f08e746f7d66f5452931bc2e822b5df9c66b64a
+  Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
+  FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
-  FirebaseCore: 85ad466044c2f013cdb167f85d426d15b128114a
+  FirebaseCore: cfc042628ef9f20debe09c0eb683135fcd404cb4
   FirebaseDatabase: d829b3a8c3e2ac7a16773c5df226966b0805dfc2
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   Floaty: d1be5d323094f0de422bb615452d00ba26ac74dd
   FontAwesome.swift: 60063e3f19ba4801155d4b0f2334ab7585763ab3
   GeoFire: 02f02683e09367c2eee073c6b09c794da19833ee
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
-  GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
+  GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
   Hero: d3c6f4dd80cdcdbb339be64e57ae3b5c3ab9938c
   LTMorphingLabel: bc170be74b219b7dae0e5543a44676d16da70ff7
-  RevealingSplashView: a19962358db66188841c73afd51eb663a29f75cd
+  nanopb: 22bc080fa3955e2116b6ff3ee6c2cb3c15ab97cb
+  RevealingSplashView: 72be158ad5e1bc72713e8f78383dc3e1803ce4d1
   SJFluidSegmentedControl: efd26ea5f0832c715e2750314a2dc0cc81e39ae5
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
+  SwiftDate: 029be76691ee89176da3a46c7df3415b6734bc5b
   SwiftLocation: 1fe2e15a5812e961496e82eeaca71d03e829e47a
   SwiftyButton: 4c9b61c499f172971a1b8c2eebbbdc20a26d8a08
   XLActionController: 57fe0ce1642e2eed971b188b490762345fdbf963
 
-PODFILE CHECKSUM: 523aadfb6886a4345b7df2283d1986ac788c04ea
+PODFILE CHECKSUM: f330653a51dff2f5459f0e114a0bcd816937f153
 
 COCOAPODS: 1.2.1

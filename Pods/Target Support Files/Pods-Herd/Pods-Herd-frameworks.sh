@@ -103,9 +103,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/RevealingSplashView/RevealingSplashView.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SJFluidSegmentedControl/SJFluidSegmentedControl.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Spring/Spring.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftDate/SwiftDate.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftLocation/SwiftLocation.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyButton/SwiftyButton.framework"
   install_framework "$BUILT_PRODUCTS_DIR/XLActionController/XLActionController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/nanopb/nanopb.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AFDateHelper/AFDateHelper.framework"
@@ -122,9 +124,11 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/RevealingSplashView/RevealingSplashView.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SJFluidSegmentedControl/SJFluidSegmentedControl.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Spring/Spring.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftDate/SwiftDate.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftLocation/SwiftLocation.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyButton/SwiftyButton.framework"
   install_framework "$BUILT_PRODUCTS_DIR/XLActionController/XLActionController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/nanopb/nanopb.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

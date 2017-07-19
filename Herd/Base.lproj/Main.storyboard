@@ -358,12 +358,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WYB-zm-WcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3628" y="-287.40629685157421"/>
+            <point key="canvasLocation" x="2818" y="-287"/>
         </scene>
-        <!--Create Post-->
+        <!--Create Post View Controller-->
         <scene sceneID="ag3-wc-aZl">
             <objects>
-                <viewController storyboardIdentifier="CreatePost" id="UdT-c0-JvJ" customClass="CreatePost" customModule="Herd" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreatePost" id="UdT-c0-JvJ" customClass="CreatePostViewController" customModule="Herd" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="W1U-1j-tTd"/>
                         <viewControllerLayoutGuide type="bottom" id="Cbk-Sd-f5g"/>
@@ -372,56 +372,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U9I-Qg-1ih">
-                                <rect key="frame" x="0.0" y="54" width="375" height="613"/>
-                                <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfC-kd-MVm" userLabel="Post Body">
-                                        <rect key="frame" x="16" y="19" width="343" height="304"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="tintColor" red="0.78431372549019607" green="0.93333333333333335" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" notEnabled="YES"/>
-                                </accessibility>
-                                <constraints>
-                                    <constraint firstItem="AfC-kd-MVm" firstAttribute="leading" secondItem="U9I-Qg-1ih" secondAttribute="leading" constant="16" id="34P-Fm-xXb"/>
-                                    <constraint firstAttribute="trailing" secondItem="AfC-kd-MVm" secondAttribute="trailing" constant="16" id="afd-fd-lwE"/>
-                                    <constraint firstAttribute="bottom" secondItem="AfC-kd-MVm" secondAttribute="bottom" constant="290" id="st5-X4-0cu"/>
-                                    <constraint firstItem="AfC-kd-MVm" firstAttribute="top" secondItem="U9I-Qg-1ih" secondAttribute="top" constant="19" id="uL8-Kz-bc6"/>
-                                </constraints>
-                            </view>
                             <navigationBar contentMode="scaleToFill" backIndicatorImage="Cancel Button" translatesAutoresizingMaskIntoConstraints="NO" id="DUd-ww-OEa">
                                 <rect key="frame" x="0.0" y="10" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="JLu-uH-kSr"/>
                                 </constraints>
                             </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfC-kd-MVm" userLabel="Post Body">
+                                <rect key="frame" x="6" y="74" width="363" height="283"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.78431372549019607" green="0.93333333333333335" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="scrollIndicatorInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                            </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="U9I-Qg-1ih" firstAttribute="top" secondItem="DUd-ww-OEa" secondAttribute="bottom" id="2Ll-ID-zVE"/>
+                            <constraint firstItem="AfC-kd-MVm" firstAttribute="top" secondItem="W1U-1j-tTd" secondAttribute="bottom" constant="10" id="9R7-Ti-k0f"/>
                             <constraint firstAttribute="trailing" secondItem="DUd-ww-OEa" secondAttribute="trailing" id="HiV-HU-7Rm"/>
-                            <constraint firstAttribute="trailing" secondItem="U9I-Qg-1ih" secondAttribute="trailing" id="Pnv-h7-38s"/>
+                            <constraint firstItem="AfC-kd-MVm" firstAttribute="leading" secondItem="3Ek-zE-mZx" secondAttribute="leadingMargin" constant="-10" id="Jr3-pK-Uq9"/>
                             <constraint firstItem="DUd-ww-OEa" firstAttribute="top" secondItem="3Ek-zE-mZx" secondAttribute="top" constant="10" id="RZ5-So-O4e"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AfC-kd-MVm" secondAttribute="trailing" constant="-10" id="XIA-VD-dWY"/>
                             <constraint firstItem="DUd-ww-OEa" firstAttribute="leading" secondItem="3Ek-zE-mZx" secondAttribute="leading" id="jkb-fs-1x6"/>
-                            <constraint firstItem="Cbk-Sd-f5g" firstAttribute="top" secondItem="U9I-Qg-1ih" secondAttribute="bottom" id="pLF-AF-t5a"/>
-                            <constraint firstItem="U9I-Qg-1ih" firstAttribute="leading" secondItem="3Ek-zE-mZx" secondAttribute="leading" id="tMj-hx-WXu"/>
+                            <constraint firstItem="Cbk-Sd-f5g" firstAttribute="top" secondItem="AfC-kd-MVm" secondAttribute="bottom" constant="310" id="kQp-pB-7xf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="d2L-hJ-Kab"/>
                     <connections>
-                        <outlet property="navBar" destination="DUd-ww-OEa" id="jNt-d1-xeA"/>
-                        <outlet property="postBody" destination="AfC-kd-MVm" id="0au-Cm-mZo"/>
+                        <outlet property="PostBody" destination="AfC-kd-MVm" id="bel-Si-aEf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XsW-eq-1lp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4540" y="-287.40629685157421"/>
+            <point key="canvasLocation" x="3918.5" y="-287.5"/>
         </scene>
         <!--Item-->
         <scene sceneID="bcG-BO-31F">
@@ -438,7 +422,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9xr-qF-o6P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2676" y="-287.40629685157421"/>
+            <point key="canvasLocation" x="1972" y="-287"/>
         </scene>
     </scenes>
     <resources>
