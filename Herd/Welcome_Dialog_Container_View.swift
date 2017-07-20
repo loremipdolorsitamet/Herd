@@ -44,7 +44,7 @@ class Welcome_Dialog_Container_View: UIViewController {
         
         if let locationLat = UserDefaults.standard.value(forKey: "current_location_lat") as? Double {
             if let locationLong = UserDefaults.standard.value(forKey: "current_location_long") as? Double {
-            
+                
                 //Authenticate User with Firebase
                 Auth.auth().signInAnonymously() { (user, error) in
                     print(user!.uid)
@@ -57,16 +57,68 @@ class Welcome_Dialog_Container_View: UIViewController {
                     geoFire?.setLocation(CLLocation(latitude: locationLat, longitude: locationLong), forKey: user!.uid) { (error) in
                         if (error != nil) {
                             //Show an error message of some sorts
-                            print("An error occured: \(error)")
+                            print("An error occured: \(String(describing: error))")
                         } else {
-                           self.performSegue(withIdentifier: "toPostView", sender: nil)
+                            self.performSegue(withIdentifier: "toPostView", sender: nil)
                         }
                     }
                 }
-            
+                
             }
         }
+        /* let center = CLLocation(latitude: 37.7832889, longitude: -122.4056973)
+         // Query locations at [37.7832889, -122.4056973] with a radius of 600 meters
+         var circleQuery = geoFire.queryAtLocation(center, withRadius: 0.6)
+         
+         // Query location by region
+         let span = MKCoordinateSpanMake(0.001, 0.001)
+         let region = MKCoordinateRegionMake(center.coordinate, span)
+         var regionQuery = geoFire.queryWithRegion(region)*/
+        
+        
+        
     }
+    
+    
+    
+    
+    /*
+     //copies all the school JSONfile to firebase database as GeoFIreJSON
+     @IBAction func Follow_The_Herd_Button(_ sender: Any) {
+     
+     let geofireRef = Database.database().reference(withPath: "school_location")
+     let geoFire = GeoFire(firebaseRef: geofireRef)
+     var locID : Int = 0
+     
+     
+     
+     Database.database().reference().child("jsonschools").observe(DataEventType.childAdded, with: { (snapshot) in
+     //print(snapshot)
+     let IDlocation = String(locID)
+     let valdata = snapshot.value as? NSDictionary
+     let locationLat = valdata?["LATCODE"] as? CLLocationDegrees ?? 0.0
+     let locationLong = valdata?["LONGCODE"] as? CLLocationDegrees ?? 0.0
+     //let IDlocation = valdata?["NCESSCH"] as? String ?? ""
+     print(locationLat)
+     print(locationLong)
+     
+     let IDlocationS : String = IDlocation
+     
+     
+     //Store location in db using GeoFire with callback
+     geoFire?.setLocation(CLLocation(latitude: locationLat, longitude: locationLong), forKey: IDlocationS) { (error) in
+            if (error != nil) {
+     //Show an error message of some sorts
+            print("An error occured: \(String(describing: error))")
+            } else {
+                self.performSegue(withIdentifier: "toPostView", sender: nil)
+            }
+            }
+            locID = locID + 1
+     })
+     
+     }*/
+
     
     
     
