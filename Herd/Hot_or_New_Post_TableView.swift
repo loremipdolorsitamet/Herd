@@ -38,29 +38,46 @@ class Hot_or_New_Post_TableView: UITableViewController {
         var circleQuery = geoFire?.query(at: center, withRadius: 200.0)
         
         var circleQueryHandler = circleQuery?.observe(.keyEntered, with: { (key: String!, location: CLLocation!) in
+            
+            let startOfTodayInInternetTime = DateInRegion().startOfDay.string(format: .iso8601(options: [.withInternetDateTime]))
+            let endOfTodayInInternetTime = DateInRegion().endOfDay.string(format: .iso8601(options: [.withInternetDateTime]))
+            
+            print(startOfTodayInInternetTime)
+            
+            //2017-07-20T23:59:59-07:00  - endoftoday
+            //2017-07-20T00:00:00-07:00 - start of today
+            //"2017-07-20T09:46:23-07:00 - post time
 
-            postRef.child(key).observeSingleEvent(of: .value, with: {(postData) in
+            postRef.queryOrdered(byChild: "timestamp").queryStarting(atValue: startOfTodayInInternetTime).observeSingleEvent(of: .value, with: {(postData) in
+                
+                
+                print(postData.key)
+                //print(postData.children)
             
                 let postToAppend = post()
                 
                 if let postDataDictionary = postData.value as? [String:AnyObject] {
                     
-                    if let postBody = postDataDictionary["body"] as? String {
+                    if let postBody = postDataDictionary[key]?["body"] as? String {
     
-                        if let postTime = postDataDictionary["timestamp"] as? String {
+                        if let postTime = postDataDictionary[key]?["timestamp"] as? String {
 
-                            if let postUpvote = postDataDictionary["upvote"] as? Int {
+                            if let postUpvote = postDataDictionary[key]?["upvote"] as? Int {
 
-                                if let postDownvote = postDataDictionary["downvote"] as? Int {
+                                if let postDownvote = postDataDictionary[key]?["downvote"] as? Int {
                                 
                                     postToAppend.body = postBody
                                     postToAppend.timestamp = postTime
                                     postToAppend.upvote = postUpvote
                                     postToAppend.downvote = postDownvote
                                     
-                                    self.postList.append(postToAppend)
+                                    if !self.postList.contains(postToAppend) {
                                     
-                                    self.PostTableView.reloadData()
+                                        self.postList.append(postToAppend)
+                                    
+                                        self.PostTableView.reloadData()
+                                        
+                                        }
                                     
                                     //Attach observers to upvote
                                     postRef.child(key).observe(.childChanged, with: {(changedVal) in
@@ -69,7 +86,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
                                             if let upvoteInt = changedVal.value as? Int {
                                                 
                                                 postToAppend.upvote = upvoteInt
-                                                self.PostTableView.reloadData()
+                                                //self.PostTableView.reloadData()
                                             }
                                             
                                         } else if changedVal.key == "downvote" {
@@ -77,7 +94,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
                                             if let downvoteInt = changedVal.value as? Int {
                                                 
                                                 postToAppend.downvote = downvoteInt
-                                                self.PostTableView.reloadData()
+                                                //self.PostTableView.reloadData()
                                             }
                                             
                                         }
@@ -158,19 +175,24 @@ class Hot_or_New_Post_TableView: UITableViewController {
         let now = DateInRegion()
         let timeStamp = DateInRegion(string: postData.timestamp, format: .iso8601(options: .withInternetDateTime), fromRegion: Region.Local())
         
-        let timeDifference = now.hour - (timeStamp?.hour)!
+        let timeDifferenceHour = now.hour - (timeStamp?.hour)!
         
-        if timeDifference < 1 {
+        if timeDifferenceHour < 1 {
             
             cell.Timestamp.text = "< 1 hr ago"
             
         } else {
             
-            cell.Timestamp.text = (String(timeDifference) + " hrs ago")
+            cell.Timestamp.text = (String(timeDifferenceHour) + " hrs ago")
         }
-
+        
+        cell.layer.cornerRadius = 10
+        
+    
+        
         return cell
     }
+
     
 
     /*
