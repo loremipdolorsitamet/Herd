@@ -109,6 +109,10 @@ class CreatePostViewController: UIViewController, UITextViewDelegate, FCAlertVie
                         
                         userRef.updateChildValues([postUID:true])
                         
+                        print("SUCCESSFULLY PUSHED POST TO DB")
+                        
+                        self.navigationController?.popViewController(animated: true)
+                        
                         
                         }
                     }
@@ -134,7 +138,6 @@ class CreatePostViewController: UIViewController, UITextViewDelegate, FCAlertVie
             if !(PostBodyTextNewLineRemoved?.isEmpty)! {
                 
             self.publishToDatabase()
-            self.navigationController?.popViewController(animated: true)
                 
             } else {
                 

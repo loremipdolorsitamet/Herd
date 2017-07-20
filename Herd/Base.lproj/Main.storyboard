@@ -245,16 +245,16 @@
         <scene sceneID="Wf6-eC-8ly">
             <objects>
                 <tableViewController id="uEi-0w-Eh2" customClass="Hot_or_New_Post_TableView" customModule="Herd" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="127" sectionHeaderHeight="28" sectionFooterHeight="28" id="2nQ-B2-5Ij">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="127" sectionHeaderHeight="28" sectionFooterHeight="28" id="2nQ-B2-5Ij">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="127" id="yQp-4Y-3aS" customClass="PostCell" customModule="Herd" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="127"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yQp-4Y-3aS" id="RLg-YV-CjP">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="126.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="127"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryh-an-m0u" userLabel="Post Body">
@@ -291,12 +291,6 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="0" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beB-kX-GdL" userLabel="Upvote Count">
-                                            <rect key="frame" x="329" y="48" width="19" height="30"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
                                         <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mQ-N8-Fif">
                                             <rect key="frame" x="316" y="8" width="47" height="35"/>
                                             <constraints>
@@ -307,23 +301,29 @@
                                                 <action selector="Upvote_Button_Tapped:" destination="yQp-4Y-3aS" eventType="touchUpInside" id="5CJ-GM-NTL"/>
                                             </connections>
                                         </button>
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="0" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beB-kX-GdL" userLabel="Upvote Count">
+                                            <rect key="frame" x="309" y="48" width="61" height="30"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="beB-kX-GdL" secondAttribute="trailing" constant="19" id="0wV-yW-mUX"/>
-                                        <constraint firstItem="beB-kX-GdL" firstAttribute="top" secondItem="6mQ-N8-Fif" secondAttribute="bottom" constant="5" id="2m2-rW-GZY"/>
                                         <constraint firstItem="6mQ-N8-Fif" firstAttribute="leading" secondItem="ryh-an-m0u" secondAttribute="trailing" constant="20" id="6d9-1Z-E5M"/>
+                                        <constraint firstItem="beB-kX-GdL" firstAttribute="leading" secondItem="ryh-an-m0u" secondAttribute="trailing" constant="13" id="ChU-Ht-dh8"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="1qe-2r-ves" secondAttribute="bottom" constant="-2.5" id="GqD-OX-nhN"/>
-                                        <constraint firstItem="1qe-2r-ves" firstAttribute="top" secondItem="beB-kX-GdL" secondAttribute="bottom" constant="8" symbolic="YES" id="H1A-hg-okx"/>
                                         <constraint firstItem="ryh-an-m0u" firstAttribute="top" secondItem="RLg-YV-CjP" secondAttribute="top" id="INk-bQ-RZT"/>
+                                        <constraint firstItem="beB-kX-GdL" firstAttribute="centerX" secondItem="6mQ-N8-Fif" secondAttribute="centerX" id="N66-15-ACQ"/>
+                                        <constraint firstItem="1qe-2r-ves" firstAttribute="top" secondItem="beB-kX-GdL" secondAttribute="bottom" constant="8" symbolic="YES" id="TrQ-OX-wb3"/>
                                         <constraint firstItem="KUz-n5-b7i" firstAttribute="top" secondItem="ryh-an-m0u" secondAttribute="bottom" constant="6" id="Udi-4Q-W4V"/>
                                         <constraint firstItem="6mQ-N8-Fif" firstAttribute="top" secondItem="RLg-YV-CjP" secondAttribute="topMargin" id="VD2-I5-byc"/>
+                                        <constraint firstItem="beB-kX-GdL" firstAttribute="centerY" secondItem="RLg-YV-CjP" secondAttribute="centerY" id="b3c-yW-eIh"/>
                                         <constraint firstItem="1qe-2r-ves" firstAttribute="leading" secondItem="6mQ-N8-Fif" secondAttribute="leading" id="eiP-aY-DN8"/>
                                         <constraint firstItem="ryh-an-m0u" firstAttribute="leading" secondItem="KUz-n5-b7i" secondAttribute="leading" id="f7k-lK-fhB"/>
                                         <constraint firstItem="1qe-2r-ves" firstAttribute="trailing" secondItem="6mQ-N8-Fif" secondAttribute="trailing" id="flQ-wQ-LFb"/>
-                                        <constraint firstItem="beB-kX-GdL" firstAttribute="leading" secondItem="ryh-an-m0u" secondAttribute="trailing" constant="33" id="ofK-AQ-beb"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="6mQ-N8-Fif" secondAttribute="trailing" constant="4" id="sDu-F6-e71"/>
-                                        <constraint firstItem="beB-kX-GdL" firstAttribute="centerY" secondItem="RLg-YV-CjP" secondAttribute="centerY" id="tin-jd-k7I"/>
                                         <constraint firstItem="ryh-an-m0u" firstAttribute="leading" secondItem="RLg-YV-CjP" secondAttribute="leadingMargin" id="xmC-gP-Msv"/>
+                                        <constraint firstItem="beB-kX-GdL" firstAttribute="top" secondItem="6mQ-N8-Fif" secondAttribute="bottom" constant="5" id="yWh-2g-ftb"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration" identifier="PostCell"/>
@@ -348,6 +348,9 @@
                                 <segment title="New"/>
                             </segments>
                             <color key="tintColor" red="0.7843137255" green="0.93333333330000001" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="hotOrNewSwitchAction:" destination="uEi-0w-Eh2" eventType="valueChanged" id="6Wn-jI-hEH"/>
+                            </connections>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hCg-pU-1VO">
                             <connections>
@@ -357,11 +360,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="PostTableView" destination="2nQ-B2-5Ij" id="5MH-zf-Zpo"/>
+                        <outlet property="hotOrNewSwitch" destination="rul-0s-4IU" id="WSt-7R-PcE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WYB-zm-WcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2818" y="-287"/>
+            <point key="canvasLocation" x="2816.8000000000002" y="-287.40629685157421"/>
         </scene>
         <!--Create Post View Controller-->
         <scene sceneID="ag3-wc-aZl">
@@ -415,7 +419,7 @@
             <objects>
                 <navigationController id="RMc-I0-I22" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="TiC-Ej-qqc"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Pw-KJ-116">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7Pw-KJ-116">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

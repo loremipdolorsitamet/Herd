@@ -13,21 +13,74 @@ import Floaty
 import SwiftLocation
 import SwiftDate
 import CoreLocation
+import Fakery
 
 class Hot_or_New_Post_TableView: UITableViewController {
     
+    @IBOutlet weak var hotOrNewSwitch: UISegmentedControl!
     @IBOutlet var PostTableView: UITableView!
     var returnedIndex = Int() //Current Index of Cell
     var postList = [post]()
+    let faker = Faker()
 
     override func viewDidLoad() {
         
         getAndSetLocation()
         
+        //fakePostTest()
+        
         super.viewDidLoad()
 
         
     }
+    
+   /* func fakePostTest() {
+        if let locationLat = UserDefaults.standard.value(forKey: "current_location_lat") as? Double {
+            if let locationLong = UserDefaults.standard.value(forKey: "current_location_long") as? Double {
+                if let uid = UserDefaults.standard.value(forKey: "uid") as? String {
+                    for i in 0...200 {
+                    //Get current time
+                    let now = DateInRegion()
+                    let nowInternetDateTime = now.string(format: .iso8601(options: [.withInternetDateTime])) //Looks like this: 2017-07-18T16:12:53-07:00
+                    
+                    //Generated random post id and ref
+                    let postRef = Database.database().reference(withPath: "posts/").childByAutoId()
+                    let postUID = postRef.key
+                    
+                    //Post body text
+                    let postBodyText = faker.lorem.characters(amount: 200)
+                    
+                    //Geofire Reference
+                    let geofireRef = Database.database().reference(withPath: "post_location/")
+                    let geoFire = GeoFire(firebaseRef: geofireRef)
+                    
+                    //User Reference
+                    let userRef = Database.database().reference(withPath: "users/").child(uid).child("posts")
+                    
+                    geoFire?.setLocation(CLLocation(latitude: locationLat, longitude: locationLong), forKey: postUID) { (error) in
+                        if (error != nil) {
+                            //Show an error message of some sorts
+                            print("An error occured: \(error)")
+                        } else {
+                            
+                            //Now that the post location is set let's write the post body to the post ref and to the users ref
+                            
+                            postRef.setValue(["body" : postBodyText,
+                                              "timestamp" : nowInternetDateTime,
+                                              "upvote" : 0,
+                                              "downvote" : 0])
+                            
+                            userRef.updateChildValues([postUID:true])
+                            
+                            
+                            }
+                 
+                        }
+                    }
+                }
+            }
+        }
+    } */
     
     func getPosts(center: CLLocation) {
         
@@ -39,21 +92,14 @@ class Hot_or_New_Post_TableView: UITableViewController {
         
         var circleQueryHandler = circleQuery?.observe(.keyEntered, with: { (key: String!, location: CLLocation!) in
             
-            let startOfTodayInInternetTime = DateInRegion().startOfDay.string(format: .iso8601(options: [.withInternetDateTime]))
-            let endOfTodayInInternetTime = DateInRegion().endOfDay.string(format: .iso8601(options: [.withInternetDateTime]))
+            let rightNow = DateInRegion()
             
-            print(startOfTodayInInternetTime)
+            let rightNowMinus12InInternetTime = (rightNow - 24.hours).string(format: .iso8601(options: [.withInternetDateTime]))
             
-            //2017-07-20T23:59:59-07:00  - endoftoday
-            //2017-07-20T00:00:00-07:00 - start of today
-            //"2017-07-20T09:46:23-07:00 - post time
-
-            postRef.queryOrdered(byChild: "timestamp").queryStarting(atValue: startOfTodayInInternetTime).observeSingleEvent(of: .value, with: {(postData) in
+            postRef.queryOrdered(byChild: "timestamp").queryEnding(atValue: rightNow.string(format: .iso8601(options: [.withInternetDateTime]))).queryStarting(atValue: rightNowMinus12InInternetTime).observeSingleEvent(of: .value, with: {(postData) in
                 
+               // print(postData.value)
                 
-                print(postData.key)
-                //print(postData.children)
-            
                 let postToAppend = post()
                 
                 if let postDataDictionary = postData.value as? [String:AnyObject] {
@@ -70,6 +116,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
                                     postToAppend.timestamp = postTime
                                     postToAppend.upvote = postUpvote
                                     postToAppend.downvote = postDownvote
+                                    postToAppend.delta = postUpvote - postDownvote
                                     
                                     if !self.postList.contains(postToAppend) {
                                     
@@ -77,7 +124,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
                                     
                                         self.PostTableView.reloadData()
                                         
-                                        }
+                                    }
                                     
                                     //Attach observers to upvote
                                     postRef.child(key).observe(.childChanged, with: {(changedVal) in
@@ -86,7 +133,8 @@ class Hot_or_New_Post_TableView: UITableViewController {
                                             if let upvoteInt = changedVal.value as? Int {
                                                 
                                                 postToAppend.upvote = upvoteInt
-                                                //self.PostTableView.reloadData()
+                                                
+                                                self.PostTableView.reloadData()
                                             }
                                             
                                         } else if changedVal.key == "downvote" {
@@ -94,7 +142,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
                                             if let downvoteInt = changedVal.value as? Int {
                                                 
                                                 postToAppend.downvote = downvoteInt
-                                                //self.PostTableView.reloadData()
+                                                self.PostTableView.reloadData()
                                             }
                                             
                                         }
@@ -116,6 +164,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
         
         
     }
+    
 
     func getAndSetLocation() {
         
@@ -163,10 +212,37 @@ class Hot_or_New_Post_TableView: UITableViewController {
     }
     
     
+    @IBAction func hotOrNewSwitchAction(_ sender: Any) {
+        
+        let tempPostList = postList
+        
+        if hotOrNewSwitch.selectedSegmentIndex == 0 {
+            
+            //reorder by upvotes
+            postList.sort(by: {$0.delta > $1.delta})
+            tableView.reloadData()
+            
+            
+        } else {
+            
+            //reorder by timestamp
+            postList.sort(by: { $0.timestamp  < $1.timestamp })
+            tableView.reloadData()
+        }
+        
+        
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         
-        let postData = self.postList[indexPath.item]
+       // if indexPath.item % 23 == 0 {
+        //    tableView.reloadData()
+       // }
+        
+        
+        
+        let postData = self.postList.reversed()[indexPath.item]
         
         cell.PostBody.text = postData.body
         cell.Upvote_Count.text = String(postData.upvote - postData.downvote)
@@ -188,9 +264,11 @@ class Hot_or_New_Post_TableView: UITableViewController {
         
         cell.layer.cornerRadius = 10
         
-    
-        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 
     
