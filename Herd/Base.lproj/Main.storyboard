@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AoU-es-BsK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AoU-es-BsK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -245,16 +245,16 @@
         <scene sceneID="Wf6-eC-8ly">
             <objects>
                 <tableViewController id="uEi-0w-Eh2" customClass="Hot_or_New_Post_TableView" customModule="Herd" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="127" sectionHeaderHeight="28" sectionFooterHeight="28" id="2nQ-B2-5Ij">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="127" sectionHeaderHeight="28" sectionFooterHeight="28" id="2nQ-B2-5Ij">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="127" id="yQp-4Y-3aS" customClass="PostCell" customModule="Herd" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="127"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yQp-4Y-3aS" id="RLg-YV-CjP">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="127"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="126.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryh-an-m0u" userLabel="Post Body">
@@ -291,6 +291,12 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="0" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beB-kX-GdL" userLabel="Upvote Count">
+                                            <rect key="frame" x="329" y="48" width="19" height="30"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                         <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mQ-N8-Fif">
                                             <rect key="frame" x="316" y="8" width="47" height="35"/>
                                             <constraints>
@@ -301,29 +307,23 @@
                                                 <action selector="Upvote_Button_Tapped:" destination="yQp-4Y-3aS" eventType="touchUpInside" id="5CJ-GM-NTL"/>
                                             </connections>
                                         </button>
-                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="0" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beB-kX-GdL" userLabel="Upvote Count">
-                                            <rect key="frame" x="309" y="48" width="61" height="30"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="beB-kX-GdL" secondAttribute="trailing" constant="19" id="0wV-yW-mUX"/>
+                                        <constraint firstItem="beB-kX-GdL" firstAttribute="top" secondItem="6mQ-N8-Fif" secondAttribute="bottom" constant="5" id="2m2-rW-GZY"/>
                                         <constraint firstItem="6mQ-N8-Fif" firstAttribute="leading" secondItem="ryh-an-m0u" secondAttribute="trailing" constant="20" id="6d9-1Z-E5M"/>
-                                        <constraint firstItem="beB-kX-GdL" firstAttribute="leading" secondItem="ryh-an-m0u" secondAttribute="trailing" constant="13" id="ChU-Ht-dh8"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="1qe-2r-ves" secondAttribute="bottom" constant="-2.5" id="GqD-OX-nhN"/>
+                                        <constraint firstItem="1qe-2r-ves" firstAttribute="top" secondItem="beB-kX-GdL" secondAttribute="bottom" constant="8" symbolic="YES" id="H1A-hg-okx"/>
                                         <constraint firstItem="ryh-an-m0u" firstAttribute="top" secondItem="RLg-YV-CjP" secondAttribute="top" id="INk-bQ-RZT"/>
-                                        <constraint firstItem="beB-kX-GdL" firstAttribute="centerX" secondItem="6mQ-N8-Fif" secondAttribute="centerX" id="N66-15-ACQ"/>
-                                        <constraint firstItem="1qe-2r-ves" firstAttribute="top" secondItem="beB-kX-GdL" secondAttribute="bottom" constant="8" symbolic="YES" id="TrQ-OX-wb3"/>
                                         <constraint firstItem="KUz-n5-b7i" firstAttribute="top" secondItem="ryh-an-m0u" secondAttribute="bottom" constant="6" id="Udi-4Q-W4V"/>
                                         <constraint firstItem="6mQ-N8-Fif" firstAttribute="top" secondItem="RLg-YV-CjP" secondAttribute="topMargin" id="VD2-I5-byc"/>
-                                        <constraint firstItem="beB-kX-GdL" firstAttribute="centerY" secondItem="RLg-YV-CjP" secondAttribute="centerY" id="b3c-yW-eIh"/>
                                         <constraint firstItem="1qe-2r-ves" firstAttribute="leading" secondItem="6mQ-N8-Fif" secondAttribute="leading" id="eiP-aY-DN8"/>
                                         <constraint firstItem="ryh-an-m0u" firstAttribute="leading" secondItem="KUz-n5-b7i" secondAttribute="leading" id="f7k-lK-fhB"/>
                                         <constraint firstItem="1qe-2r-ves" firstAttribute="trailing" secondItem="6mQ-N8-Fif" secondAttribute="trailing" id="flQ-wQ-LFb"/>
+                                        <constraint firstItem="beB-kX-GdL" firstAttribute="leading" secondItem="ryh-an-m0u" secondAttribute="trailing" constant="33" id="ofK-AQ-beb"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="6mQ-N8-Fif" secondAttribute="trailing" constant="4" id="sDu-F6-e71"/>
+                                        <constraint firstItem="beB-kX-GdL" firstAttribute="centerY" secondItem="RLg-YV-CjP" secondAttribute="centerY" id="tin-jd-k7I"/>
                                         <constraint firstItem="ryh-an-m0u" firstAttribute="leading" secondItem="RLg-YV-CjP" secondAttribute="leadingMargin" id="xmC-gP-Msv"/>
-                                        <constraint firstItem="beB-kX-GdL" firstAttribute="top" secondItem="6mQ-N8-Fif" secondAttribute="bottom" constant="5" id="yWh-2g-ftb"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration" identifier="PostCell"/>
@@ -334,6 +334,7 @@
                                     <outlet property="Timestamp" destination="KUz-n5-b7i" id="BRS-7U-DFA"/>
                                     <outlet property="Upvote_Button" destination="6mQ-N8-Fif" id="ylD-xF-Qze"/>
                                     <outlet property="Upvote_Count" destination="beB-kX-GdL" id="Z2Y-KS-3r5"/>
+                                    <segue destination="u91-Nd-rlk" kind="show" identifier="toComments" id="njb-fK-cth"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -348,9 +349,6 @@
                                 <segment title="New"/>
                             </segments>
                             <color key="tintColor" red="0.7843137255" green="0.93333333330000001" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="hotOrNewSwitchAction:" destination="uEi-0w-Eh2" eventType="valueChanged" id="6Wn-jI-hEH"/>
-                            </connections>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hCg-pU-1VO">
                             <connections>
@@ -360,12 +358,91 @@
                     </navigationItem>
                     <connections>
                         <outlet property="PostTableView" destination="2nQ-B2-5Ij" id="5MH-zf-Zpo"/>
-                        <outlet property="hotOrNewSwitch" destination="rul-0s-4IU" id="WSt-7R-PcE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WYB-zm-WcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2816.8000000000002" y="-287.40629685157421"/>
+            <point key="canvasLocation" x="2818" y="-287"/>
+        </scene>
+        <!--Comments Table View Controller-->
+        <scene sceneID="Owa-FC-Hft">
+            <objects>
+                <tableViewController id="u91-Nd-rlk" customClass="CommentsTableViewController" customModule="Herd" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="127" sectionHeaderHeight="28" sectionFooterHeight="28" id="gS3-Bv-3LH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="127" id="TVe-79-46o" customClass="CommentCell" customModule="Herd" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="127"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TVe-79-46o" id="6ES-Th-0R2">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="126.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="This is a test" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="22Z-w5-nSk">
+                                            <rect key="frame" x="8" y="0.0" width="288" height="92"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Y sec" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pNe-UM-ECd">
+                                            <rect key="frame" x="8" y="99" width="57" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Herdmoji" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="w8Q-t9-QEU">
+                                            <rect key="frame" x="60" y="99" width="98" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="0" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cYV-Fb-TEU">
+                                            <rect key="frame" x="325" y="45" width="19" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYp-Kl-Vnx">
+                                            <rect key="frame" x="318" y="10" width="47" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button" image="Upvote"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEJ-A0-mJS">
+                                            <rect key="frame" x="318" y="90" width="47" height="35"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button" image="Downvote"/>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="Downvote_Button" destination="tEJ-A0-mJS" id="E4N-YL-Vmi"/>
+                                    <outlet property="Herdmoji" destination="w8Q-t9-QEU" id="rzk-hT-adv"/>
+                                    <outlet property="PostBody" destination="22Z-w5-nSk" id="DoE-LU-plO"/>
+                                    <outlet property="Timestamp" destination="pNe-UM-ECd" id="f9d-3i-92W"/>
+                                    <outlet property="Upvote_Button" destination="fYp-Kl-Vnx" id="Ask-OL-EXG"/>
+                                    <outlet property="Upvote_Count" destination="cYV-Fb-TEU" id="hlG-Ey-9h9"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="u91-Nd-rlk" id="vRd-lt-n09"/>
+                            <outlet property="delegate" destination="u91-Nd-rlk" id="Edw-vo-zVu"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="CommentsTableView" destination="gS3-Bv-3LH" id="tDv-7y-qI9"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VnH-aH-Xo8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3906" y="-7"/>
         </scene>
         <!--Create Post View Controller-->
         <scene sceneID="ag3-wc-aZl">
@@ -412,7 +489,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XsW-eq-1lp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3918.5" y="-287.5"/>
+            <point key="canvasLocation" x="3905" y="-695"/>
         </scene>
         <!--Item-->
         <scene sceneID="bcG-BO-31F">
