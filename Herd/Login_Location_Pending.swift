@@ -10,6 +10,9 @@ import UIKit
 import Hero
 import SwiftLocation
 import CoreLocation
+import GeoFire
+import FirebaseDatabase
+
 
 class Login_Location_Pending: UIViewController, CLLocationManagerDelegate {
 
@@ -20,6 +23,12 @@ class Login_Location_Pending: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*
+         
+         Upon viewload, locationManager is assigned approriate delegate and asks for user's permission for location 
+         SwiftLocation is then used to pull the user's location and set in UserDefaults
+         
+        */
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -31,9 +40,25 @@ class Login_Location_Pending: UIViewController, CLLocationManagerDelegate {
             let defaults = UserDefaults.standard
             defaults.setValue(Double(location.coordinate.latitude), forKey: "current_location_lat")
             defaults.setValue(Double(location.coordinate.longitude), forKey: "current_location_long")
+            defaults.set(true, forKey: "authd")
             
-            self.performSegue(withIdentifier: "toLocationSuccess", sender: nil)
+            //Checking if user's location is within 2 miles of a school
+            let geofireRef = Database.database().reference(withPath: "json/")
+            let geoFire = GeoFire(firebaseRef: geofireRef)
             
+            var circleQuery = geoFire?.query(at: location, withRadius: 2.0)
+            
+            var circleQueryHandler = circleQuery?.observe(.keyEntered, with: {(key: String!, location : CLLocation!) in
+            
+                if key.isEmpty || key == nil{
+                    
+                    self.performSegue(withIdentifier: "toLocationSuccess", sender: nil)
+ 
+                } else {
+                    
+                    //Show an message saying you cant use this in schools
+                }
+            })
             
         }) { (request, last, error) in
             request.cancel() // stop continous location monitoring on error
@@ -57,8 +82,7 @@ class Login_Location_Pending: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    
-    
+   
     /*
     // MARK: - Navigation
 

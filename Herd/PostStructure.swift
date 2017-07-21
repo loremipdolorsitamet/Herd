@@ -15,6 +15,11 @@ class post: NSObject {
     var upvote = Int()
     var downvote = Int()
     var delta = Int()
+    var postid = String()
+    var liked = Bool()
+    var disliked = Bool()
+    var upvoteTapped = Bool()
+    var downvoteTapped = Bool()
     
     
 }

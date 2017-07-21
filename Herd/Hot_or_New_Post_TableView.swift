@@ -25,9 +25,9 @@ class Hot_or_New_Post_TableView: UITableViewController {
 
     override func viewDidLoad() {
         
-        getAndSetLocation()
-        
-        //fakePostTest()
+        //All UI based operations are done in response to data recieved in this method
+        let geoFireRef = "user_location"
+        getAndSetLocation(reference: geoFireRef)
         
         super.viewDidLoad()
 
@@ -117,6 +117,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
                                     postToAppend.upvote = postUpvote
                                     postToAppend.downvote = postDownvote
                                     postToAppend.delta = postUpvote - postDownvote
+                                    postToAppend.postid = key
                                     
                                     if !self.postList.contains(postToAppend) {
                                     
@@ -164,11 +165,10 @@ class Hot_or_New_Post_TableView: UITableViewController {
         
         
     }
-    
 
-    func getAndSetLocation() {
+    func getAndSetLocation(reference : String) {
         
-        let geofireRef = Database.database().reference(withPath: "user_location")
+        let geofireRef = Database.database().reference(withPath: reference)
         let geoFire = GeoFire(firebaseRef: geofireRef)
         let uid = UserDefaults.standard.value(forKey: "uid") as! String
         
@@ -192,7 +192,30 @@ class Hot_or_New_Post_TableView: UITableViewController {
                     //Show an error message of some sorts
                     print("An error occured: \(error)")
                 } else {
-                    self.getPosts(center: CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
+                    
+                    let schoolsGeoFireRef = Database.database().reference(withPath: "json/")
+                    let schoolsGeoFire = GeoFire(firebaseRef: schoolsGeoFireRef)
+                    
+                    var schoolsCircleQuery = schoolsGeoFire?.query(at: location, withRadius: 2.0)
+                    
+                    var schoolsCircleQueryHandler = schoolsCircleQuery?.observe(.keyEntered, with: {(key: String!, location: CLLocation!) in
+                    
+                        
+                        if key.isEmpty || key == nil {
+                            
+                            self.getPosts(center: CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
+                            
+                        } else {
+                            
+                            //Show a message saying you use this in schools
+                            
+                            
+                        }
+                    
+                    
+                    
+                    })
+                    
                    //Fire off query
                 }
             }
@@ -204,29 +227,38 @@ class Hot_or_New_Post_TableView: UITableViewController {
         }
         
     }
-
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return self.postList.count
     }
-    
-    
+  
     @IBAction func hotOrNewSwitchAction(_ sender: Any) {
+        
+        /*
+         
+         Switch to control which data is inside the table view 
+         Note: While the data stays the same, it is sorted differently 
+         Index 0 means hot is selected, index 1 means new is selected
+         
+         postList.delta is the number of upvotes 
+         postList.timstamp provides the internet time of post which is then parsed inside the tableview cell 
+         
+         */
         
         let tempPostList = postList
         
         if hotOrNewSwitch.selectedSegmentIndex == 0 {
             
             //reorder by upvotes
-            postList.sort(by: {$0.delta > $1.delta})
+            postList.sort(by: {($0.upvote - $0.downvote) > ($1.upvote - $1.downvote)})
             tableView.reloadData()
             
             
         } else {
             
             //reorder by timestamp
-            postList.sort(by: { $0.timestamp  < $1.timestamp })
+            postList.sort(by: { $0.timestamp  > $1.timestamp })
             tableView.reloadData()
         }
         
@@ -236,18 +268,46 @@ class Hot_or_New_Post_TableView: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         
-       // if indexPath.item % 23 == 0 {
-        //    tableView.reloadData()
-       // }
+        postList.sort(by: {($0.upvote - $0.downvote) > ($1.upvote - $1.downvote)}) //Sorts array based off of upvotes
         
+        //Convenience variable for interacting with posts
+        let postData = self.postList[indexPath.item]
         
-        
-        let postData = self.postList.reversed()[indexPath.item]
         
         cell.PostBody.text = postData.body
         cell.Upvote_Count.text = String(postData.upvote - postData.downvote)
         
-        //Timestamp formatting 
+        /*
+         
+         Logic for setting upvote or downvote button, controlled first by user's interaction the programmtically set in upvote/downvote button action
+         
+         */
+        
+        if postData.liked == true && postData.disliked == false {
+            
+            cell.Upvote_Button.isSelected = true
+            cell.Upvote_Button.isHighlighted = true
+            cell.Downvote_Button.isSelected = false
+            cell.Downvote_Button.isHighlighted = false
+            
+        } else if (postData.liked == false && postData.disliked == true){
+            
+            cell.Upvote_Button.isSelected = false
+            cell.Upvote_Button.isHighlighted = false
+            cell.Downvote_Button.isSelected = true
+            cell.Downvote_Button.isHighlighted = true
+            
+        }
+        
+        
+        /*
+         
+         Stylizing date is done here using SwiftDate 
+         SwiftDate allows us to subtract time arithmetic 
+         Only 2 time conditions exist, namely, either the post was made less than an hour ago or the hours ago it was posted is listed
+         
+         */
+        
         let now = DateInRegion()
         let timeStamp = DateInRegion(string: postData.timestamp, format: .iso8601(options: .withInternetDateTime), fromRegion: Region.Local())
         
@@ -270,53 +330,101 @@ class Hot_or_New_Post_TableView: UITableViewController {
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-
     
+    @IBAction func upvoteButtonAction(_ sender: UIButton) {
+        
+        /*
+         //Actions for up voting:
+         1) Optionally unwrap indexPath of the postcell
+         2) If optional unwrapping succeddes then run transactional block
+         3) Transactional block runs downvoting as transaction so simulationous upvotes don't "collide"
+         4)
+         */
+        
+        
+        if let superview = sender.superview, let cell = superview.superview as? PostCell{
+            if let indexPath = tableView.indexPath(for: cell) {
+                let postFromArrray = postList[indexPath.row]
+                
+                if (postFromArrray.downvoteTapped == true || postFromArrray.upvoteTapped == false) {
+                
+                Database.database().reference(withPath: "posts").child(postFromArrray.postid).runTransactionBlock({ (currentData : MutableData) -> TransactionResult in
+                    
+                    if var post = currentData.value as? [String:Any] {
+                        
+                        var upvote = (post["upvote"]) as! Int
+                        
+                            upvote+=1
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+                            postFromArrray.liked = true
+                            postFromArrray.disliked = false
+                        
+                            post["upvote"] = upvote
+                        
+                            currentData.value = post
+                        
+                            self.tableView.reloadData()
+                        
+                            postFromArrray.upvoteTapped = true
+                        
+                            return TransactionResult.success(withValue: currentData)
+                        
+                        }
+                    
+                        return TransactionResult.success(withValue: currentData)
+                    })
+                    
+                }
+                
+            }
+        }   
     }
-    */
+    
+    @IBAction func downButtonAction(_ sender: UIButton) {
+        
+        /*
+        //Actions for down voting: 
+         1) Optionally unwrap indexPath of the postcell 
+         2) If optional unwrapping succeddes then run transactional block
+         3) Transactional block runs downvoting as transaction so simulationous downvotes don't "collide" 
+         4)
+        */
+        
+        if let superview = sender.superview, let cell = superview.superview as? PostCell{
+            if let indexPath = tableView.indexPath(for: cell) {
+                let postFromArray = postList[indexPath.row]
+                
+                if postFromArray.downvoteTapped == false || postFromArray.upvoteTapped == true {
+                
+                Database.database().reference(withPath: "posts").child(postFromArray.postid).runTransactionBlock({ (currentData : MutableData) -> TransactionResult in
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+                    if var post = currentData.value as? [String:Any] {
+                        
+                            var downvote = (post["downvote"]) as! Int
+                        
+                            downvote+=1
+                        
+                            self.postList[indexPath.row].liked = false
+                            self.postList[indexPath.row].disliked = true
+                        
+                            post["downvote"] = downvote
+                        
+                            currentData.value = post
+                        
+                            self.tableView.reloadData()
+                        
+                            postFromArray.downvoteTapped = true
+                        
+                            return TransactionResult.success(withValue: currentData)
+                        
+                        }
+                    
+                        return TransactionResult.success(withValue: currentData)
+                    })
+                }
+            }
+        }      }
+    
 
 }
 

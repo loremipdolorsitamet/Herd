@@ -9,6 +9,7 @@
 import UIKit
 
 class PostCell: UITableViewCell {
+    
     @IBOutlet weak var Herdmoji: UITextView!
 
     @IBOutlet weak var Upvote_Button: UIButton!
@@ -29,8 +30,6 @@ class PostCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
-    
     @IBAction func Upvote_Button_Tapped(_ sender: Any) {
         
         Upvote_Button.setImage(UIImage(named:"Upvote - Selected"), for: .normal)
@@ -42,7 +41,6 @@ class PostCell: UITableViewCell {
         
     }
     
-    
     @IBAction func Downvote_Button_Tapped(_ sender: Any) {
         
         Upvote_Button.setImage(UIImage(named:"Upvote"), for: .normal)
@@ -53,7 +51,6 @@ class PostCell: UITableViewCell {
         print(indexPath.item)
         
     }
-    
     
 
 }

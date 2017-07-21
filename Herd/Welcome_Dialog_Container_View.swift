@@ -79,9 +79,6 @@ class Welcome_Dialog_Container_View: UIViewController {
         
     }
     
-    
-    
-    
     /*
      //copies all the school JSONfile to firebase database as GeoFIreJSON
      @IBAction func Follow_The_Herd_Button(_ sender: Any) {
@@ -118,10 +115,6 @@ class Welcome_Dialog_Container_View: UIViewController {
      })
      
      }*/
-
-    
-    
-    
 
     /*
     // MARK: - Navigation

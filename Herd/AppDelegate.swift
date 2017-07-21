@@ -21,6 +21,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         Date.setDefaultRegion(Region.GMT())
+        Database.database().isPersistenceEnabled = false
+        
+        
+        //Login view is made the initial view controller if the user has not logged in yet - checked through UserDefaults key authd
+        
+        if let hasUserBeenAuthd = UserDefaults.standard.value(forKey: "authd") as? Bool {
+            
+            //Show Post view
+            
+        } else {
+            
+            //Show auth screen
+            
+        }
+        
         return true
     }
 

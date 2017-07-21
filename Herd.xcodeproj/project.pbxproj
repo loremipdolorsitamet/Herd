@@ -10,6 +10,8 @@
 		380B8FDB0315548983B3A03C /* Pods_Herd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32BD957D8D9742FE39165DB /* Pods_Herd.framework */; };
 		753EC5B11F158FA500477726 /* Comment_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753EC5B01F158FA500477726 /* Comment_View.swift */; };
 		75467C411F1B029E00F8752B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75467C401F1B029E00F8752B /* Constants.swift */; };
+		B999CE711F217E68003428BD /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B999CE701F217E68003428BD /* CommentCell.swift */; };
+		B999CE731F217E73003428BD /* CommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B999CE721F217E73003428BD /* CommentsTableViewController.swift */; };
 		F40A0B271F0F365B00D8F907 /* Login_Location_Pending.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40A0B261F0F365B00D8F907 /* Login_Location_Pending.swift */; };
 		F40A0B291F0F42CB00D8F907 /* Login_Location_Pulled.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40A0B281F0F42CB00D8F907 /* Login_Location_Pulled.swift */; };
 		F40A0B2D1F0FF87500D8F907 /* FuturaPTLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = F40A0B2C1F0FF87500D8F907 /* FuturaPTLight.otf */; };
@@ -29,6 +31,8 @@
 /* Begin PBXFileReference section */
 		753EC5B01F158FA500477726 /* Comment_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment_View.swift; sourceTree = "<group>"; };
 		75467C401F1B029E00F8752B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B999CE701F217E68003428BD /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		B999CE721F217E73003428BD /* CommentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsTableViewController.swift; sourceTree = "<group>"; };
 		D32BD957D8D9742FE39165DB /* Pods_Herd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Herd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D40E8EAEEDC8726C8DB37961 /* Pods-Herd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Herd.release.xcconfig"; path = "Pods/Target Support Files/Pods-Herd/Pods-Herd.release.xcconfig"; sourceTree = "<group>"; };
 		F140C98898F07B46BE59A7A5 /* Pods-Herd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Herd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Herd/Pods-Herd.debug.xcconfig"; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 				F40A0B281F0F42CB00D8F907 /* Login_Location_Pulled.swift */,
 				F4934A5F1F10020B00A2F83E /* Welcome_Dialog_Container_View.swift */,
 				F4616C8C1EFCF8DF007EE41F /* Main.storyboard */,
+				B999CE701F217E68003428BD /* CommentCell.swift */,
+				B999CE721F217E73003428BD /* CommentsTableViewController.swift */,
 				F4A57BFE1F12DC85002E86F7 /* PostCell.swift */,
 				F4D6227F1F1155BF00820C3C /* Navigation_Controller.swift */,
 				F4D622811F1155F500820C3C /* Hot_or_New_Post_TableView.swift */,
@@ -254,6 +260,7 @@
 			files = (
 				F4A57BFF1F12DC85002E86F7 /* PostCell.swift in Sources */,
 				75467C411F1B029E00F8752B /* Constants.swift in Sources */,
+				B999CE731F217E73003428BD /* CommentsTableViewController.swift in Sources */,
 				F4934A601F10020B00A2F83E /* Welcome_Dialog_Container_View.swift in Sources */,
 				F4D114C31F1EF936008B5986 /* PostStructure.swift in Sources */,
 				753EC5B11F158FA500477726 /* Comment_View.swift in Sources */,
@@ -263,6 +270,7 @@
 				F4ADBFFF1F1EA82400C02C13 /* CreatePostViewController.swift in Sources */,
 				F40A0B271F0F365B00D8F907 /* Login_Location_Pending.swift in Sources */,
 				F4D622821F1155F500820C3C /* Hot_or_New_Post_TableView.swift in Sources */,
+				B999CE711F217E68003428BD /* CommentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
