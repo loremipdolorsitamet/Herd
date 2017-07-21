@@ -1,7 +1,18 @@
 Sprint 2 Plan
-
 Group and Product: Herd
 7/16/17
+
+The main goal for sprint 2 is to let users create posts and send them up to the database.  Smaller goals include validation of
+the user, managing transitions between view controllers, and data validation with shape files.
+
+User Story 1: As a student, I need a safe environment to share my opinions, so that I do not feel attack/harassed.
+Task 1: Get the user's location, and push it to the database. (10 hours)
+Task 2: Convert shape files containing the locations of all high schools in america and convert them to a json file. (7 hours)
+Task 3: Validate the user's location is not within the location of a high school, to avoid having minors use the app.(10 hours)
+Total time for User Story 1: 27 hours.
+
+User Story 2: As a student, I need to share a post/opinion, so that I can see if it’s popular or not.
+Task 1: 
 
 Refer to this link:
 https://trello.com/b/XY7YW7Vb/sprint-2-scrum-planning-doc
