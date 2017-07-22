@@ -5,6 +5,9 @@ Herd
 User story 1 from sprint 1:  As a student, I need to share a post/opinion, so that I can see if it’s popular or not.
 Scenario:
   1. Start the Herd app, select the "follow the herd" button to see posts from other users.
+  2. Click the "+" button on the top right of the screen to go to the create post screen.
+  3. Write the post and hit enter to send the post in.
+  4. You will be transfered back to the view where posts are displayed and your will be shown.
   
 User story 1 from sprint 2:  As a student, I need a safe environment to share my opinions, so that I do not feel attack or 
 harassed.
