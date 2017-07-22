@@ -2,3 +2,7 @@ System and Unit Test Report
 Herd
 7/21/17
 
+User story 1 from sprint 1:  As a student, I need to share a post/opinion, so that I can see if it’s popular or not.
+Scenario:
+  1. Start the Herd app, select the "follow the herd" button to see posts from other users.
+  
