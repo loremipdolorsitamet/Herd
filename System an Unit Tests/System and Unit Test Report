@@ -11,8 +11,23 @@ Scenario:
   
 User story 1 from sprint 2:  As a student, I need a safe environment to share my opinions, so that I do not feel attack or 
 harassed.
+Scenario: 
 
 User story 1 from sprint 3: As a parent, I do not want my child (17 or younger/in high school) to have access to this tool, 
 so that they are not exposed to the posts of older students.
+Scenario:
+  1. Open the app within the confines of a high school.
+  2. Select the "follow the herd" button to see posts from other users.
+  3. User should be taken to a blank screen and shown a prompt telling them why they can't use the app.
 
 User story 2 from sprint 3: As a student I want to respond to other posts so I can share my opinion about various topics.
+Scenario:
+  1. Go to the view where posts are displayed.
+  2. Click on the post you want to respond to.
+  3. User should see responses to the selected post.
+  4. Click the like or dislike buttons on a response to react to any of these.
+  5. User should see the vote score update on the post they reacted to.
+  6. Click the "+" button to respond to the post.
+  7. User should be taken to screen where they can respond to post.
+  8. Type response and hit enter to send it in.
+  9. User should see screen with responses, including theirs, to the original post.
