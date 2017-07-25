@@ -381,6 +381,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 6MHJQS6ZE3;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = HerdTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HerdApp.Herd.HerdTests;
@@ -395,6 +396,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 6MHJQS6ZE3;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = HerdTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HerdApp.Herd.HerdTests;
