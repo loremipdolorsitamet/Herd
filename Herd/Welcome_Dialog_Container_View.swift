@@ -26,6 +26,8 @@ class Welcome_Dialog_Container_View: UIViewController {
     var KeyFound: String?
     var LocationFound: CLLocation?
     
+    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,6 +38,7 @@ class Welcome_Dialog_Container_View: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     @IBAction func Cancel_Button(_ sender: Any) {
         
@@ -48,12 +51,17 @@ class Welcome_Dialog_Container_View: UIViewController {
     
     @IBAction func Follow_The_Herd_Button(_ sender: Any) {
         
+    
+        
         let geofireRef = Database.database().reference(withPath: "user_location")
         let geoFire = GeoFire(firebaseRef: geofireRef)
         let geofireRefSchools = Database.database().reference(withPath: "school_location")
         let geoFireSchools = GeoFire(firebaseRef: geofireRefSchools)
         let zerolocation = CLLocation(latitude: 0.0, longitude: -0.0)
         self.LocationFound = zerolocation
+        
+        
+        activityIndicator.startAnimating()
 
         
         if let locationLat = UserDefaults.standard.value(forKey: "current_location_lat") as? Double {
@@ -101,11 +109,13 @@ class Welcome_Dialog_Container_View: UIViewController {
                                 print(self.LocationFound!)
                                 
                                 if (self.LocationFound == zerolocation ){
+                                    self.activityIndicator.stopAnimating()
                                     self.performSegue(withIdentifier: "toPostView", sender: nil)
                                     print("allow to post")
                                 }
                                 else{
                                     //self.performSegue(withIdentifier: "toPostView", sender: nil)
+                                    self.activityIndicator.stopAnimating()
                                     let alert = UIAlertController(title: "Alert", message: "You are not allow to use HERD in this area!", preferredStyle: UIAlertControllerStyle.alert)
                                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                                     self.present(alert, animated: true, completion: nil)
