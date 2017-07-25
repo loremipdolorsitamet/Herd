@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		380B8FDB0315548983B3A03C /* Pods_Herd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32BD957D8D9742FE39165DB /* Pods_Herd.framework */; };
+		7539CCDF1F26E52D00DB2640 /* HerdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7539CCDE1F26E52D00DB2640 /* HerdTests.swift */; };
 		753EC5B11F158FA500477726 /* Comment_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753EC5B01F158FA500477726 /* Comment_View.swift */; };
 		75467C411F1B029E00F8752B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75467C401F1B029E00F8752B /* Constants.swift */; };
 		B999CE711F217E68003428BD /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B999CE701F217E68003428BD /* CommentCell.swift */; };
@@ -28,7 +29,20 @@
 		F4D622821F1155F500820C3C /* Hot_or_New_Post_TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D622811F1155F500820C3C /* Hot_or_New_Post_TableView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		7539CCE11F26E52D00DB2640 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4616C791EFCF8DE007EE41F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4616C801EFCF8DF007EE41F;
+			remoteInfo = Herd;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		7539CCDC1F26E52D00DB2640 /* HerdTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HerdTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7539CCDE1F26E52D00DB2640 /* HerdTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerdTests.swift; sourceTree = "<group>"; };
+		7539CCE01F26E52D00DB2640 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		753EC5B01F158FA500477726 /* Comment_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment_View.swift; sourceTree = "<group>"; };
 		75467C401F1B029E00F8752B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B999CE701F217E68003428BD /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -55,6 +69,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7539CCD91F26E52D00DB2640 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4616C7E1EFCF8DF007EE41F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -66,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7539CCDD1F26E52D00DB2640 /* HerdTests */ = {
+			isa = PBXGroup;
+			children = (
+				7539CCDE1F26E52D00DB2640 /* HerdTests.swift */,
+				7539CCE01F26E52D00DB2640 /* Info.plist */,
+			);
+			path = HerdTests;
+			sourceTree = "<group>";
+		};
 		89012DEADD9B586F55ABB0EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				F4616C831EFCF8DF007EE41F /* Herd */,
+				7539CCDD1F26E52D00DB2640 /* HerdTests */,
 				F4616C821EFCF8DF007EE41F /* Products */,
 				FD2693714E4D8D6EDC3FE999 /* Pods */,
 				89012DEADD9B586F55ABB0EA /* Frameworks */,
@@ -88,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				F4616C811EFCF8DF007EE41F /* Herd.app */,
+				7539CCDC1F26E52D00DB2640 /* HerdTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,6 +162,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7539CCDB1F26E52D00DB2640 /* HerdTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7539CCE31F26E52D00DB2640 /* Build configuration list for PBXNativeTarget "HerdTests" */;
+			buildPhases = (
+				7539CCD81F26E52D00DB2640 /* Sources */,
+				7539CCD91F26E52D00DB2640 /* Frameworks */,
+				7539CCDA1F26E52D00DB2640 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7539CCE21F26E52D00DB2640 /* PBXTargetDependency */,
+			);
+			name = HerdTests;
+			productName = HerdTests;
+			productReference = 7539CCDC1F26E52D00DB2640 /* HerdTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F4616C801EFCF8DF007EE41F /* Herd */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4616C971EFCF8DF007EE41F /* Build configuration list for PBXNativeTarget "Herd" */;
@@ -160,9 +210,15 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Herd;
 				TargetAttributes = {
+					7539CCDB1F26E52D00DB2640 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 6MHJQS6ZE3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F4616C801EFCF8DF007EE41F;
+					};
 					F4616C801EFCF8DF007EE41F = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = GCXUQDQ8B2;
+						DevelopmentTeam = 6MHJQS6ZE3;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -186,11 +242,19 @@
 			projectRoot = "";
 			targets = (
 				F4616C801EFCF8DF007EE41F /* Herd */,
+				7539CCDB1F26E52D00DB2640 /* HerdTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7539CCDA1F26E52D00DB2640 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4616C7F1EFCF8DF007EE41F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -254,6 +318,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7539CCD81F26E52D00DB2640 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7539CCDF1F26E52D00DB2640 /* HerdTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4616C7D1EFCF8DF007EE41F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -276,6 +348,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		7539CCE21F26E52D00DB2640 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4616C801EFCF8DF007EE41F /* Herd */;
+			targetProxy = 7539CCE11F26E52D00DB2640 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		F4616C8C1EFCF8DF007EE41F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -296,6 +376,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7539CCE41F26E52D00DB2640 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 6MHJQS6ZE3;
+				INFOPLIST_FILE = HerdTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.HerdApp.Herd.HerdTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Herd.app/Herd";
+			};
+			name = Debug;
+		};
+		7539CCE51F26E52D00DB2640 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 6MHJQS6ZE3;
+				INFOPLIST_FILE = HerdTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.HerdApp.Herd.HerdTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Herd.app/Herd";
+			};
+			name = Release;
+		};
 		F4616C951EFCF8DF007EE41F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -394,7 +502,7 @@
 			baseConfigurationReference = F140C98898F07B46BE59A7A5 /* Pods-Herd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GCXUQDQ8B2;
+				DEVELOPMENT_TEAM = 6MHJQS6ZE3;
 				INFOPLIST_FILE = Herd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HerdApp.Herd;
@@ -408,7 +516,7 @@
 			baseConfigurationReference = D40E8EAEEDC8726C8DB37961 /* Pods-Herd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GCXUQDQ8B2;
+				DEVELOPMENT_TEAM = 6MHJQS6ZE3;
 				INFOPLIST_FILE = Herd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HerdApp.Herd;
@@ -420,6 +528,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7539CCE31F26E52D00DB2640 /* Build configuration list for PBXNativeTarget "HerdTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7539CCE41F26E52D00DB2640 /* Debug */,
+				7539CCE51F26E52D00DB2640 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		F4616C7C1EFCF8DE007EE41F /* Build configuration list for PBXProject "Herd" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
