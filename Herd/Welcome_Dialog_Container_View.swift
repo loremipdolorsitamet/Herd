@@ -16,6 +16,17 @@ import FirebaseDatabase
 class Welcome_Dialog_Container_View: UIViewController {
 
     @IBOutlet var CancelButton: UIButton!
+    let locationManager = CLLocationManager()
+    let imagePicker = UIImagePickerController()
+    var regionQuery: GFRegionQuery?
+    var gfeventtype: GFEventType?
+
+
+    var foundQuery: GFCircleQuery?
+    var KeyFound: String?
+    var LocationFound: CLLocation?
+    
+    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +39,7 @@ class Welcome_Dialog_Container_View: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
     @IBAction func Cancel_Button(_ sender: Any) {
         
         print("CANCEL TAPPED")
@@ -39,8 +51,18 @@ class Welcome_Dialog_Container_View: UIViewController {
     
     @IBAction func Follow_The_Herd_Button(_ sender: Any) {
         
+    
+        
         let geofireRef = Database.database().reference(withPath: "user_location")
         let geoFire = GeoFire(firebaseRef: geofireRef)
+        let geofireRefSchools = Database.database().reference(withPath: "school_location")
+        let geoFireSchools = GeoFire(firebaseRef: geofireRefSchools)
+        let zerolocation = CLLocation(latitude: 0.0, longitude: -0.0)
+        self.LocationFound = zerolocation
+        
+        
+        activityIndicator.startAnimating()
+
         
         if let locationLat = UserDefaults.standard.value(forKey: "current_location_lat") as? Double {
             if let locationLong = UserDefaults.standard.value(forKey: "current_location_long") as? Double {
@@ -55,27 +77,62 @@ class Welcome_Dialog_Container_View: UIViewController {
                     
                     //Store location in db using GeoFire with callback
                     geoFire?.setLocation(CLLocation(latitude: locationLat, longitude: locationLong), forKey: user!.uid) { (error) in
+                        
                         if (error != nil) {
                             //Show an error message of some sorts
                             print("An error occured: \(String(describing: error))")
                         } else {
-                            self.performSegue(withIdentifier: "toPostView", sender: nil)
+                            
+                            let center = CLLocation(latitude: locationLat, longitude: locationLong)
+                            
+                            
+                            
+                            // Query locations at [locationLat, locationLong)] with a radius of 1000 meters
+                            
+                            self.foundQuery = geoFireSchools?.query(at: center, withRadius: 0.3)
+                            
+                            
+                            self.foundQuery?.observe( .keyEntered, with: { (key: String!, location: CLLocation!) in
+                                print(key)
+                                print("location")
+                                print(location)
+                                self.KeyFound = key
+                                self.LocationFound = location
+                                print(self.LocationFound!)
+                                
+                            })
+                            
+                            print("this outside the foundquery")
+                            self.foundQuery?.observeReady({
+                                print("All initial data has been loaded and events have been fired!")
+                                
+                                print(self.LocationFound!)
+                                
+                                if (self.LocationFound == zerolocation ){
+                                    self.activityIndicator.stopAnimating()
+                                    self.performSegue(withIdentifier: "toPostView", sender: nil)
+                                    print("allow to post")
+                                }
+                                else{
+                                    //self.performSegue(withIdentifier: "toPostView", sender: nil)
+                                    self.activityIndicator.stopAnimating()
+                                    let alert = UIAlertController(title: "Alert", message: "You are not allow to use HERD in this area!", preferredStyle: UIAlertControllerStyle.alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                    self.present(alert, animated: true, completion: nil)
+                                    print("not allow to post")
+                                }
+
+                            })
+                            
                         }
+                        
                     }
+                  
+
                 }
                 
             }
         }
-        /* let center = CLLocation(latitude: 37.7832889, longitude: -122.4056973)
-         // Query locations at [37.7832889, -122.4056973] with a radius of 600 meters
-         var circleQuery = geoFire.queryAtLocation(center, withRadius: 0.6)
-         
-         // Query location by region
-         let span = MKCoordinateSpanMake(0.001, 0.001)
-         let region = MKCoordinateRegionMake(center.coordinate, span)
-         var regionQuery = geoFire.queryWithRegion(region)*/
-        
-        
         
     }
     
