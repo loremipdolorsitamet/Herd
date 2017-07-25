@@ -58,8 +58,9 @@ class CommentsTableViewController: UITableViewController {
                                 postToAppend.upvote = postUpvote
                                 postToAppend.downvote = postDownvote
                      
-                                self.commentList.append(postToAppend)
+                                //self.commentList.append(postToAppend)
                                 //print(postToAppend)
+                                getPost(postKey: postData.key)
                      
                                 self.CommentsTableView.reloadData()
                             }
@@ -70,14 +71,15 @@ class CommentsTableViewController: UITableViewController {
         })
     }
     
-    func getComments() {
+    func getComments(postKey: String) {
         let postsRef = Database.database().reference(withPath: "posts")
         //let commentsRef = postsRef.child("comments")
         print(originalCommentKey)
-        postsRef.child(originalCommentKey).child("comments").observeSingleEvent(of: .value, with: {(postData) in
+        postsRef.child(postKey).child("comments").observeSingleEvent(of: .value, with: {(postData) in
             print("posts")
             print(postData)
             for child in postData.children {
+                
                 print("printing out snapshot")
                 print(child)
                 let postToAppend = post()

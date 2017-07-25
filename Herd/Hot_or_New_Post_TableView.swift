@@ -26,6 +26,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
     override func viewDidLoad() {
         
         //All UI based operations are done in response to data recieved in this method
+        //fakePostTest()
         let geoFireRef = "user_location"
         getAndSetLocation(reference: geoFireRef)
         
@@ -34,7 +35,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
         
     }
     
-   /* func fakePostTest() {
+    func fakePostTest() {
         if let locationLat = UserDefaults.standard.value(forKey: "current_location_lat") as? Double {
             if let locationLong = UserDefaults.standard.value(forKey: "current_location_long") as? Double {
                 if let uid = UserDefaults.standard.value(forKey: "uid") as? String {
@@ -80,7 +81,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
                 }
             }
         }
-    } */
+    }
     
     func getPosts(center: CLLocation) {
         
@@ -196,14 +197,13 @@ class Hot_or_New_Post_TableView: UITableViewController {
                     let schoolsGeoFireRef = Database.database().reference(withPath: "json/")
                     let schoolsGeoFire = GeoFire(firebaseRef: schoolsGeoFireRef)
                     
-                    var schoolsCircleQuery = schoolsGeoFire?.query(at: location, withRadius: 2.0)
+                    var schoolsCircleQuery = schoolsGeoFire?.query(at: location, withRadius: 888.0)
                     
                     var schoolsCircleQueryHandler = schoolsCircleQuery?.observe(.keyEntered, with: {(key: String!, location: CLLocation!) in
                     
                         
                         if key.isEmpty || key == nil {
                             
-                            self.getPosts(center: CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
                             
                         } else {
                             
@@ -217,6 +217,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
                     })
                     
                    //Fire off query
+                    self.getPosts(center: CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
                 }
             }
 
