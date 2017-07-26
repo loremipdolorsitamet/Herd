@@ -29,6 +29,7 @@ class Login_Location_Pending: UIViewController, CLLocationManagerDelegate {
          SwiftLocation is then used to pull the user's location and set in UserDefaults
          
         */
+        var schoolLocationKeys = [String]()
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -42,48 +43,38 @@ class Login_Location_Pending: UIViewController, CLLocationManagerDelegate {
             defaults.setValue(Double(location.coordinate.longitude), forKey: "current_location_long")
             defaults.set(true, forKey: "authd")
             
-            //Checking if user's location is within 2 miles of a school
+            //Checking if user's location is within 0.75 miles of a school
             let geofireRef = Database.database().reference(withPath: "school_location/")
             let geoFire = GeoFire(firebaseRef: geofireRef)
             
-            var circleQuery = geoFire?.query(at: location, withRadius: 2.0)
+            var circleQuery = geoFire?.query(at: location, withRadius: 0.05)
             
             var circleQueryHandler = circleQuery?.observe(.keyEntered, with: {(key: String!, location : CLLocation!) in
             
-                print("VVVVVVVVVVV------PRINTING KEY BELOW----------VVVVVVVVVVVV")
                 print(key)
+                schoolLocationKeys.append(key)
                 
-                
-                
-                if key.isEmpty || key == nil{
-                 
-                    //
-                
-                } else {
-                    
-                    //Show an message saying you cant use this in schools
-                    self.performSegue(withIdentifier: "toLocationSuccess", sender: nil)
-                    
-                }
             })
             
             circleQuery?.observeReady({
-            
-                print("READY!!")
-            
+                
+                if schoolLocationKeys.count == 0 {      //if no schools are in the vicinty
+                    
+                    self.performSegue(withIdentifier: "toLocationSuccess", sender: nil)
+                    
+                    
+                } else {
+                    
+                    //Show error
+                }
+                
             })
             
         }) { (request, last, error) in
             request.cancel() // stop continous location monitoring on error
             print("Location monitoring failed due to an error \(error)")
         }
-        
-        //self.performSegue(withIdentifier: "toLocationSuccess", sender: nil)
-        
-
-        // Do any additional setup after loading the view.
-        
-        
+  
     }
 
     override func didReceiveMemoryWarning() {

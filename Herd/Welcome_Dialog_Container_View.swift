@@ -55,10 +55,6 @@ class Welcome_Dialog_Container_View: UIViewController {
         
         let geofireRef = Database.database().reference(withPath: "user_location")
         let geoFire = GeoFire(firebaseRef: geofireRef)
-        let geofireRefSchools = Database.database().reference(withPath: "school_location")
-        let geoFireSchools = GeoFire(firebaseRef: geofireRefSchools)
-        let zerolocation = CLLocation(latitude: 0.0, longitude: -0.0)
-        self.LocationFound = zerolocation
         
         
         activityIndicator.startAnimating()
@@ -83,104 +79,17 @@ class Welcome_Dialog_Container_View: UIViewController {
                             print("An error occured: \(String(describing: error))")
                         } else {
                             
-                            let center = CLLocation(latitude: locationLat, longitude: locationLong)
-                            
-                            
-                            
-                            // Query locations at [locationLat, locationLong)] with a radius of 1000 meters
-                            
-                            self.foundQuery = geoFireSchools?.query(at: center, withRadius: 0.3)
-                            
-                            
-                            self.foundQuery?.observe( .keyEntered, with: { (key: String!, location: CLLocation!) in
-                                print(key)
-                                print("location")
-                                print(location)
-                                self.KeyFound = key
-                                self.LocationFound = location
-                                print(self.LocationFound!)
-                                
-                            })
-                            
-                            print("this outside the foundquery")
-                            self.foundQuery?.observeReady({
-                                print("All initial data has been loaded and events have been fired!")
-                                
-                                print(self.LocationFound!)
-                                
-                                if (self.LocationFound == zerolocation ){
-                                    self.activityIndicator.stopAnimating()
-                                    self.performSegue(withIdentifier: "toPostView", sender: nil)
-                                    print("allow to post")
-                                }
-                                else{
-                                    //self.performSegue(withIdentifier: "toPostView", sender: nil)
-                                    self.activityIndicator.stopAnimating()
-                                    let alert = UIAlertController(title: "Alert", message: "You are not allow to use HERD in this area!", preferredStyle: UIAlertControllerStyle.alert)
-                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                                    self.present(alert, animated: true, completion: nil)
-                                    print("not allow to post")
-                                }
-
-                            })
+                            self.performSegue(withIdentifier: "toPostView", sender: nil)
                             
                         }
                         
                     }
-                  
 
                 }
-                
+            
             }
         }
         
     }
-    
-    /*
-     //copies all the school JSONfile to firebase database as GeoFIreJSON
-     @IBAction func Follow_The_Herd_Button(_ sender: Any) {
-     
-     let geofireRef = Database.database().reference(withPath: "school_location")
-     let geoFire = GeoFire(firebaseRef: geofireRef)
-     var locID : Int = 0
-     
-     
-     
-     Database.database().reference().child("jsonschools").observe(DataEventType.childAdded, with: { (snapshot) in
-     //print(snapshot)
-     let IDlocation = String(locID)
-     let valdata = snapshot.value as? NSDictionary
-     let locationLat = valdata?["LATCODE"] as? CLLocationDegrees ?? 0.0
-     let locationLong = valdata?["LONGCODE"] as? CLLocationDegrees ?? 0.0
-     //let IDlocation = valdata?["NCESSCH"] as? String ?? ""
-     print(locationLat)
-     print(locationLong)
-     
-     let IDlocationS : String = IDlocation
-     
-     
-     //Store location in db using GeoFire with callback
-     geoFire?.setLocation(CLLocation(latitude: locationLat, longitude: locationLong), forKey: IDlocationS) { (error) in
-            if (error != nil) {
-     //Show an error message of some sorts
-            print("An error occured: \(String(describing: error))")
-            } else {
-                self.performSegue(withIdentifier: "toPostView", sender: nil)
-            }
-            }
-            locID = locID + 1
-     })
-     
-     }*/
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

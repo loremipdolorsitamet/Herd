@@ -22,6 +22,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
     var returnedIndex = Int() //Current Index of Cell
     var postList = [post]()
     let faker = Faker()
+    var indexPathForSegue = Int()
 
     override func viewDidLoad() {
         
@@ -181,8 +182,9 @@ class Hot_or_New_Post_TableView: UITableViewController {
         
         //Get location using GPS chip
         Location.getLocation(accuracy: .neighborhood, frequency: .oneShot, success: { (_, location) in
-            print("Successfully pulled location:  \(location)")
+            
             //Store Location into UserDefaults
+            var schoolLocationKeys = [String]()
             let defaults = UserDefaults.standard
             defaults.setValue(Double(location.coordinate.latitude), forKey: "current_location_lat")
             defaults.setValue(Double(location.coordinate.longitude), forKey: "current_location_long")
@@ -194,30 +196,30 @@ class Hot_or_New_Post_TableView: UITableViewController {
                     print("An error occured: \(error)")
                 } else {
                     
-                    let schoolsGeoFireRef = Database.database().reference(withPath: "json/")
+                    let schoolsGeoFireRef = Database.database().reference(withPath: "school_location")
                     let schoolsGeoFire = GeoFire(firebaseRef: schoolsGeoFireRef)
                     
-                    var schoolsCircleQuery = schoolsGeoFire?.query(at: location, withRadius: 888.0)
+                    var schoolsCircleQuery = schoolsGeoFire?.query(at: location, withRadius: 0.05)
                     
                     var schoolsCircleQueryHandler = schoolsCircleQuery?.observe(.keyEntered, with: {(key: String!, location: CLLocation!) in
-                    
                         
-                        if key.isEmpty || key == nil {
+                        print(key)
+                        schoolLocationKeys.append(key)
+
+                    })
+                    schoolsCircleQuery?.observeReady({
+                        
+                        if schoolLocationKeys.count == 0 {      //if no schools are in the vicinty
                             
+                            print("Querying posts")
+                            self.getPosts(center: CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
                             
                         } else {
                             
-                            //Show a message saying you use this in schools
-                            
-                            
+                            //Show error
                         }
-                    
-                    
-                    
+                        
                     })
-                    
-                   //Fire off query
-                    self.getPosts(center: CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
                 }
             }
 
@@ -269,7 +271,21 @@ class Hot_or_New_Post_TableView: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         
-        postList.sort(by: {($0.upvote - $0.downvote) > ($1.upvote - $1.downvote)}) //Sorts array based off of upvotes
+        //postList.sort(by: {($0.upvote - $0.downvote) > ($1.upvote - $1.downvote)}) //Sorts array based off of upvotes
+        
+        if hotOrNewSwitch.selectedSegmentIndex == 0 {
+            
+            //reorder by upvotes
+            postList.sort(by: {($0.upvote - $0.downvote) > ($1.upvote - $1.downvote)})
+           // tableView.reloadData()
+            
+            
+        } else {
+            
+            //reorder by timestamp
+            postList.sort(by: { $0.timestamp  > $1.timestamp })
+            //tableView.reloadData()
+        }
         
         //Convenience variable for interacting with posts
         let postData = self.postList[indexPath.item]
@@ -284,19 +300,18 @@ class Hot_or_New_Post_TableView: UITableViewController {
          
          */
         
+        cell.Upvote_Button.setImage(UIImage(named:"Upvote"), for: .normal)
+        cell.Downvote_Button.setImage(UIImage(named: "Downvote"), for: .normal)
+        
         if postData.liked == true && postData.disliked == false {
             
-            cell.Upvote_Button.isSelected = true
-            cell.Upvote_Button.isHighlighted = true
-            cell.Downvote_Button.isSelected = false
-            cell.Downvote_Button.isHighlighted = false
+            cell.Upvote_Button.setImage(UIImage(named:"Upvote - Selected"), for: .normal)
+            cell.Downvote_Button.setImage(UIImage(named: "Downvote"), for: .normal)
             
         } else if (postData.liked == false && postData.disliked == true){
             
-            cell.Upvote_Button.isSelected = false
-            cell.Upvote_Button.isHighlighted = false
-            cell.Downvote_Button.isSelected = true
-            cell.Downvote_Button.isHighlighted = true
+            cell.Upvote_Button.setImage(UIImage(named:"Upvote"), for: .normal)
+            cell.Downvote_Button.setImage(UIImage(named: "Downvote - Selected"), for: .normal)
             
         }
         
@@ -323,13 +338,18 @@ class Hot_or_New_Post_TableView: UITableViewController {
             cell.Timestamp.text = (String(timeDifferenceHour) + " hrs ago")
         }
         
-        cell.layer.cornerRadius = 10
+        cell.layer.cornerRadius = 14
+        cell.layer.masksToBounds = true
+        let borderColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
+        cell.layer.borderColor = borderColor.cgColor
+        cell.layer.borderWidth = 3.5
         
         return cell
     }
     
+    
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return false
     }
     
     @IBAction func upvoteButtonAction(_ sender: UIButton) {
@@ -347,7 +367,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
             if let indexPath = tableView.indexPath(for: cell) {
                 let postFromArrray = postList[indexPath.row]
                 
-                if (postFromArrray.downvoteTapped == true || postFromArrray.upvoteTapped == false) {
+                if postFromArrray.upvoteTapped == false {
                 
                 Database.database().reference(withPath: "posts").child(postFromArrray.postid).runTransactionBlock({ (currentData : MutableData) -> TransactionResult in
                     
@@ -359,14 +379,14 @@ class Hot_or_New_Post_TableView: UITableViewController {
 
                             postFromArrray.liked = true
                             postFromArrray.disliked = false
+                            postFromArrray.upvoteTapped = true
+                            postFromArrray.downvoteTapped = false
                         
                             post["upvote"] = upvote
                         
                             currentData.value = post
                         
                             self.tableView.reloadData()
-                        
-                            postFromArrray.upvoteTapped = true
                         
                             return TransactionResult.success(withValue: currentData)
                         
@@ -395,7 +415,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
             if let indexPath = tableView.indexPath(for: cell) {
                 let postFromArray = postList[indexPath.row]
                 
-                if postFromArray.downvoteTapped == false || postFromArray.upvoteTapped == true {
+                if postFromArray.downvoteTapped == false {
                 
                 Database.database().reference(withPath: "posts").child(postFromArray.postid).runTransactionBlock({ (currentData : MutableData) -> TransactionResult in
 
@@ -405,16 +425,16 @@ class Hot_or_New_Post_TableView: UITableViewController {
                         
                             downvote+=1
                         
-                            self.postList[indexPath.row].liked = false
-                            self.postList[indexPath.row].disliked = true
+                            postFromArray.liked = false
+                            postFromArray.disliked = true
+                            postFromArray.downvoteTapped = true
+                            postFromArray.upvoteTapped = false
                         
                             post["downvote"] = downvote
                         
                             currentData.value = post
                         
                             self.tableView.reloadData()
-                        
-                            postFromArray.downvoteTapped = true
                         
                             return TransactionResult.success(withValue: currentData)
                         
@@ -426,6 +446,32 @@ class Hot_or_New_Post_TableView: UITableViewController {
             }
         }      }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.item)
+        
+        self.indexPathForSegue = indexPath.item
+        performSegue(withIdentifier: "toCommentsView", sender: nil)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toCommentsView" {
+            
+           if let destinationVC = segue.destination as? UINavigationController {
+            if let commentVC = destinationVC.viewControllers[0] as? Comments_View_Controller {
+                    //
+                
+                }
+            
+            }
+            
+            //CommentsTableViewController
+            
+        }
+    }
+
+    
+
 
 }
 

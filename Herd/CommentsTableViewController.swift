@@ -13,6 +13,7 @@ import Floaty
 import SwiftLocation
 import SwiftDate
 import CoreLocation
+import Hero
 
 class CommentsTableViewController: UITableViewController {
     
@@ -20,10 +21,13 @@ class CommentsTableViewController: UITableViewController {
     var returnedIndex = Int() //Current Index of Cell
     var originalCommentKey = String()
     var commentList = [post]()
+    var seguedPost = post()
     //var ref: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.isHeroEnabled = true
+        tableView.reloadData()
         //getPost()
         //getComments()
 
@@ -60,7 +64,7 @@ class CommentsTableViewController: UITableViewController {
                      
                                 //self.commentList.append(postToAppend)
                                 //print(postToAppend)
-                                getPost(postKey: postData.key)
+                                self.getComments(postKey: postData.key)
                      
                                 self.CommentsTableView.reloadData()
                             }
@@ -119,20 +123,36 @@ class CommentsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return commentList.count
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
         
-        let post = self.commentList[indexPath.row]
-        cell.PostBody?.text = post.body
-        cell.Timestamp?.text = post.timestamp
-        cell.Upvote_Count?.text = String(post.upvote - post.downvote)
+        
+        cell.layer.cornerRadius = 14
+        cell.layer.masksToBounds = true
+        let borderColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
+        cell.layer.borderColor = borderColor.cgColor
+        cell.layer.borderWidth = 3.5
+        
         
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        if (section == 0) {
+            
+            return 6.5
+            
+        } else {
+            
+            return 0
+        
+        }
+    }
+
 }
 
 
