@@ -6,28 +6,24 @@ The main goal for sprint 2 is to let users create posts and send them up to the 
 the user, managing transitions between view controllers, and data validation with shape files.
 
 User Story 1: As a student, I need a safe environment to share my opinions, so that I do not feel attack/harassed.
-Task 1: Get the user's location, and push it to the database. (10 hours)
-Task 2: Convert shape files containing the locations of all high schools in america and convert them to a json file. (7 hours)
-Task 3: Validate the user's location is not within the location of a high school, to avoid having minors use the app.(10 hours)
-Total time for User Story 1: 27 hours.
+Task 1: Authorize the user to use the app. (5 hours)
+Task 2: Get the user's location, and push it to the database. (10 hours)
+Task 3: Validate the user's location is not within the location of a high school, to avoid having minors use the app.(13 hours)
+Total time for User Story 1: 28 hours.
 
 User Story 2: As a student, I need to share a post/opinion, so that I can see if it’s popular or not.
-Task 1: Authorize the user to create posts. (4 hours)
-Task 2: Manage the segue to the view controller where the user can create posts. (2 hours)
-Task 3: Let the user create the post and push it to the database. (10 hours)
-Task 4: Pull posts from the database and display them so users can react by liking or disliking the post. (7 hours)
-Task 5: Manage transitions between views and style the app using the Hero Cocoapod. (5 hours)
-Total time for User Story 2: 28 hours.
+Task 1: Manage the segue to the view controller where the user can create posts. (5 hours)
+Task 2: Let the user create the post and push it to the database. (7 hours)
+Task 3: Manage transitions between views and style the app using the Hero Cocoapod. (5 hours)
+Total time for User Story 2: 17 hours.
 
 Initial task assignment:
-  User Story 1, Task 1: Sid
-  User Story 1, Task 2: Sumukh
+  User Story 1, Task 1: Sumukh
+  User Story 1, Task 2: Sid
   User Story 1, Task 3: Javier
-  User Story 2, Task 1: Javier
-  User Story 2, Task 2: Sid
-  User Story 2, Task 3: Sumukh
-  User Story 2, Task 4: Ethan
-  User Story 2, Task 5: Ethan
+  User Story 2, Task 1: Ethan
+  User Story 2, Task 2: Sumukh
+  User Story 2, Task 3: Ethan
 
 Refer to this link for scrum board:
 https://trello.com/b/XY7YW7Vb/sprint-2-scrum-planning-doc
