@@ -8,8 +8,8 @@ the user, managing transitions between view controllers, and data validation wit
 User Story 1: As a student, I need a safe environment to share my opinions, so that I do not feel attack/harassed.
 Task 1: Authorize the user to use the app. (5 hours)
 Task 2: Get the user's location, and push it to the database. (10 hours)
-Task 3: Validate the user's location is not within the location of a high school, to avoid having minors use the app.(13 hours)
-Total time for User Story 1: 28 hours.
+Task 3: Validate the user's location is not within the location of a high school, to avoid having minors use the app.(12 hours)
+Total time for User Story 1: 27 hours.
 
 User Story 2: As a student, I need to share a post/opinion, so that I can see if it’s popular or not.
 Task 1: Manage the segue to the view controller where the user can create posts. (5 hours)
