@@ -19,6 +19,8 @@ class CreatePostViewController: UIViewController, UITextViewDelegate, FCAlertVie
     var charactersRemaing = UILabel()
     var viewAboveKeyboard = UIToolbar() //Creates toolbar view
     var charactersRemainingBarButton = UIBarButtonItem()
+    var fromComments = Bool()
+    var seguedPost = post()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +73,7 @@ class CreatePostViewController: UIViewController, UITextViewDelegate, FCAlertVie
     }
     
     
-    func publishToDatabase() {
+    func publishToDatabase(reference: String) {
         if let locationLat = UserDefaults.standard.value(forKey: "current_location_lat") as? Double {
             if let locationLong = UserDefaults.standard.value(forKey: "current_location_long") as? Double {
                 if let uid = UserDefaults.standard.value(forKey: "uid") as? String {
@@ -81,7 +83,7 @@ class CreatePostViewController: UIViewController, UITextViewDelegate, FCAlertVie
                 let nowInternetDateTime = now.string(format: .iso8601(options: [.withInternetDateTime])) //Looks like this: 2017-07-18T16:12:53-07:00
                 
                 //Generated random post id and ref
-                let postRef = Database.database().reference(withPath: "posts/").childByAutoId()
+                let postRef = Database.database().reference(withPath: "posts").childByAutoId()
                 let postUID = postRef.key
                 
                 //Post body text
@@ -94,6 +96,8 @@ class CreatePostViewController: UIViewController, UITextViewDelegate, FCAlertVie
                 //User Reference
                 let userRef = Database.database().reference(withPath: "users/").child(uid).child("posts")
                 
+                    if reference == "posts" {
+                        
                 geoFire?.setLocation(CLLocation(latitude: locationLat, longitude: locationLong), forKey: postUID) { (error) in
                     if (error != nil) {
                         //Show an error message of some sorts
@@ -105,7 +109,8 @@ class CreatePostViewController: UIViewController, UITextViewDelegate, FCAlertVie
                         postRef.setValue(["body" : postBodyText,
                                           "timestamp" : nowInternetDateTime,
                                           "upvote" : 0,
-                                          "downvote" : 0])
+                                          "downvote" : 0,
+                                          "commentCount": 0])
                         
                         userRef.updateChildValues([postUID:true])
                         
@@ -114,7 +119,46 @@ class CreatePostViewController: UIViewController, UITextViewDelegate, FCAlertVie
                         self.navigationController?.popViewController(animated: true)
                         
                         
+                            }
                         }
+                    } else if reference == "comments" {
+                        
+                        //User Reference
+                        let userRef = Database.database().reference(withPath: "users/").child(uid).child("comments")
+                        
+                        let commentRef = Database.database().reference(withPath: "comments").child(seguedPost.postid).childByAutoId()
+                        let commentUID = commentRef.key
+                        
+                        commentRef.setValue(["body":postBodyText,
+                                             "timestamp": nowInternetDateTime,
+                                             "upvote": 0,
+                                             "downvote": 0])
+                        
+                        userRef.updateChildValues([commentUID:true])
+                        
+                        Database.database().reference(withPath: "posts").child(seguedPost.postid).runTransactionBlock({ (currentData : MutableData) -> TransactionResult in
+                            
+                            if var post = currentData.value as? [String:Any] {
+                                
+                                var commentCount = (post["upvote"]) as! Int
+                                
+                                commentCount+=1
+                                
+                                post["commentCount"] = commentCount
+                                
+                                currentData.value = post
+
+                                
+                                return TransactionResult.success(withValue: currentData)
+                                
+                            }
+                            
+                            return TransactionResult.success(withValue: currentData)
+                        })
+                        
+                        self.navigationController?.popViewController(animated: true)
+                        
+                        print("SUCCESSFULLY PUSHED COMMENT TO DB")
                     }
                 }
             }
@@ -137,7 +181,12 @@ class CreatePostViewController: UIViewController, UITextViewDelegate, FCAlertVie
             
             if !(PostBodyTextNewLineRemoved?.isEmpty)! {
                 
-            self.publishToDatabase()
+                var reference = String()
+                
+                if fromComments {reference = "comments"
+                } else {reference = "posts"}
+                
+                self.publishToDatabase(reference: reference)
                 
             } else {
                 

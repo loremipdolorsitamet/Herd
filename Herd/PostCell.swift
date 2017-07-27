@@ -17,6 +17,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var Timestamp: UITextView!
     @IBOutlet weak var PostBody: UITextView!
     @IBOutlet weak var Upvote_Count: UITextView!
+    @IBOutlet var comments: UITextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

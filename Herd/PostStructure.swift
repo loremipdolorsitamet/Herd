@@ -20,6 +20,7 @@ class post: NSObject {
     var disliked = Bool()
     var upvoteTapped = Bool()
     var downvoteTapped = Bool()
+    var commentsCount = Int()
     
     
 }

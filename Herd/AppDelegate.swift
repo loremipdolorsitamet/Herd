@@ -26,15 +26,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Login view is made the initial view controller if the user has not logged in yet - checked through UserDefaults key authd
         
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        var initialViewController = UIViewController()
+        
         if let hasUserBeenAuthd = UserDefaults.standard.value(forKey: "authd") as? Bool {
             
             //Show Post view
+            //postScreen
+            initialViewController = storyboard.instantiateViewController(withIdentifier: "postScreen")
             
         } else {
             
             //Show auth screen
+            //authScreen
+            initialViewController = storyboard.instantiateViewController(withIdentifier: "authScreen")
             
         }
+        
+        
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
         
         return true
     }

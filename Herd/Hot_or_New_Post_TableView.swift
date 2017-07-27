@@ -30,10 +30,16 @@ class Hot_or_New_Post_TableView: UITableViewController {
         //fakePostTest()
         let geoFireRef = "user_location"
         getAndSetLocation(reference: geoFireRef)
+        self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh), for: UIControlEvents.valueChanged)
         
         super.viewDidLoad()
 
         
+    }
+    
+    func handleRefresh() {
+        tableView.reloadData()
+        refreshControl?.endRefreshing()
     }
     
     func fakePostTest() {
@@ -90,7 +96,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
         let postRef = Database.database().reference(withPath: "posts")
         let geoFire = GeoFire(firebaseRef: geofireRef)
         
-        var circleQuery = geoFire?.query(at: center, withRadius: 200.0)
+        var circleQuery = geoFire?.query(at: center, withRadius: 10.0)
         
         var circleQueryHandler = circleQuery?.observe(.keyEntered, with: { (key: String!, location: CLLocation!) in
             
@@ -100,7 +106,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
             
             postRef.queryOrdered(byChild: "timestamp").queryEnding(atValue: rightNow.string(format: .iso8601(options: [.withInternetDateTime]))).queryStarting(atValue: rightNowMinus12InInternetTime).observeSingleEvent(of: .value, with: {(postData) in
                 
-               // print(postData.value)
+                //print(postData.value)
                 
                 let postToAppend = post()
                 
@@ -113,6 +119,8 @@ class Hot_or_New_Post_TableView: UITableViewController {
                             if let postUpvote = postDataDictionary[key]?["upvote"] as? Int {
 
                                 if let postDownvote = postDataDictionary[key]?["downvote"] as? Int {
+                                    
+                                    if let postCommentCount = postDataDictionary[key]?["commentCount"] as? Int {
                                 
                                     postToAppend.body = postBody
                                     postToAppend.timestamp = postTime
@@ -120,6 +128,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
                                     postToAppend.downvote = postDownvote
                                     postToAppend.delta = postUpvote - postDownvote
                                     postToAppend.postid = key
+                                    postToAppend.commentsCount = postCommentCount
                                     
                                     if !self.postList.contains(postToAppend) {
                                     
@@ -146,20 +155,21 @@ class Hot_or_New_Post_TableView: UITableViewController {
                                                 
                                                 postToAppend.downvote = downvoteInt
                                                 self.PostTableView.reloadData()
-                                            }
+                                                }
                                             
-                                        }
-                                    })
-                                }
+                                            }
+                                        })
+                                    }
                                 
-                            }
+                                }
                             
+                            }
+                        
                         }
                         
                     }
-   
+                    
                 }
-                
             })
             
             
@@ -249,8 +259,6 @@ class Hot_or_New_Post_TableView: UITableViewController {
          
          */
         
-        let tempPostList = postList
-        
         if hotOrNewSwitch.selectedSegmentIndex == 0 {
             
             //reorder by upvotes
@@ -277,14 +285,13 @@ class Hot_or_New_Post_TableView: UITableViewController {
             
             //reorder by upvotes
             postList.sort(by: {($0.upvote - $0.downvote) > ($1.upvote - $1.downvote)})
-           // tableView.reloadData()
             
             
         } else {
             
             //reorder by timestamp
             postList.sort(by: { $0.timestamp  > $1.timestamp })
-            //tableView.reloadData()
+            
         }
         
         //Convenience variable for interacting with posts
@@ -346,8 +353,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
         
         return cell
     }
-    
-    
+
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return false
     }
@@ -444,10 +450,11 @@ class Hot_or_New_Post_TableView: UITableViewController {
                     })
                 }
             }
-        }      }
+        }
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.item)
+        //print(indexPath.item)
         
         self.indexPathForSegue = indexPath.item
         performSegue(withIdentifier: "toCommentsView", sender: nil)
@@ -457,11 +464,10 @@ class Hot_or_New_Post_TableView: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toCommentsView" {
             
-           if let destinationVC = segue.destination as? UINavigationController {
-            if let commentVC = destinationVC.viewControllers[0] as? Comments_View_Controller {
-                    //
-                
-                }
+            print(self.indexPathForSegue)
+           if let destinationVC = segue.destination as? Comments_View_Controller {
+                    destinationVC.seguedPost = postList[self.indexPathForSegue]
+
             
             }
             
