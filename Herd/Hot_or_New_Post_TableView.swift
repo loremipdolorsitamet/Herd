@@ -104,9 +104,11 @@ class Hot_or_New_Post_TableView: UITableViewController {
             
             let rightNowMinus12InInternetTime = (rightNow - 24.hours).string(format: .iso8601(options: [.withInternetDateTime]))
             
-            postRef.queryOrdered(byChild: "timestamp").queryEnding(atValue: rightNow.string(format: .iso8601(options: [.withInternetDateTime]))).queryStarting(atValue: rightNowMinus12InInternetTime).observeSingleEvent(of: .value, with: {(postData) in
+            postRef.queryOrdered(byChild: "timestamp").queryEnding(atValue: rightNow.string(format: .iso8601(options: [.withInternetDateTime]))).queryStarting(atValue: rightNowMinus12InInternetTime).observe(.value , with: {(postData) in
                 
                 //print(postData.value)
+                
+                
                 
                 let postToAppend = post()
                 
