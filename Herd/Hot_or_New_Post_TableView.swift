@@ -465,7 +465,7 @@ class Hot_or_New_Post_TableView: UITableViewController {
         if segue.identifier == "toCommentsView" {
             
             print(self.indexPathForSegue)
-           if let destinationVC = segue.destination as? CommentsTableViewController {
+           if let destinationVC = segue.destination as? Comments_View_Controller {
                     destinationVC.seguedPost = postList[self.indexPathForSegue]
 
             
